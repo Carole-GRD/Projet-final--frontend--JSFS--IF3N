@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+
+import { routes } from './routes';
+import { useRoutes } from 'react-router-dom';
+
+import { Drawer } from '@mui/material';
+import { useState } from 'react';
+
+
+import './styles/index.scss';
+import Header from './components/header/header';
+import NavBar from './components/nav-bar/nav-bar';
 
 function App() {
+
+  const [toogleDrawer, setToogleDrawer] = useState(false);
+  
+  const element = useRoutes(routes);
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header
+        onOpenMenu={() => setToogleDrawer(true)} />
+      <Drawer
+        anchor='left'
+        open={toogleDrawer}
+        onClose={() => setToogleDrawer(false)}>
+        <NavBar />
+      </Drawer>
+      <div className="App">
+        {element}
+      </div>
+    </>
   );
 }
 

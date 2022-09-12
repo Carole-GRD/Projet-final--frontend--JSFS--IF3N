@@ -1,0 +1,35 @@
+// TODO changer le padding des paragraphes une fois le menu mis en place !
+
+.intro {
+    position: absolute;
+    // top: 50px;             // ATTENTION -> les lien ne fonctionne plus  !!
+    height: 100vh;
+    // background-color: $color-23;
+
+    
+    // background-image: linear-gradient(to bottom right, $color-21, $color-22), url('../assets/img/filet_ciel.jpg');
+    // background-attachment: fixed;
+    // width: 100vw;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-attachment: fixed;
+    // background-position: center;
+
+    p {
+        padding: 0 100px;      
+        text-align: justify;
+        color: $color-5;
+        span {
+            font-weight: bold;
+        }
+    }
+    
+    // p:first-of-type {
+    //     margin-top: 200px;
+    // }
+    
+    
+}   
+
+
+

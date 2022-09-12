@@ -1,0 +1,84 @@
+
+
+.header {
+    position: fixed;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    background: $color-2;
+    height: 50px;
+    width: 100vw;
+    z-index: 9999;
+
+    button.menu {
+        padding: 10px 0;
+        background-color: $color-2;
+        border: none;
+        cursor: pointer;
+        .sportsVolleyballIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 15px;
+            width: 30px;
+            height: 30px;
+            color: $color-5;
+            background-color: $color-2;
+            border-radius: 50%;
+        }
+    }
+    
+    h2 {
+        color: $color-5;
+    }
+    
+    .btn {
+        position: absolute;
+        right: 50px;
+        
+        button {
+            border: none;
+            padding: 5px 10px;
+            width: 70px;
+            color: $color-5;
+            cursor: pointer;
+        }
+
+        .login {
+            background-color: $color-3; 
+            border-radius: 5px 0 0 5px;
+        }
+
+        .logout {
+            background-color: $color-4;
+            border-radius: 0 5px 5px 0;
+        }
+    }
+}
+
+.nav {
+    // display: none;
+    position: relative;
+    margin: 100px 50px;
+    // position: absolute;
+    // margin: 60px 0 0 30px;
+    article {
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            background-color: $color-4;
+            border-radius: 50%;
+        }
+        p {
+            color: $color-5;
+        }
+    }
+    ul {
+        list-style: none;
+    }
+}
+
+

@@ -1,0 +1,133 @@
+
+[
+    {
+        "firstname" : "Andy",
+        "lastname" : "Gillet",
+        "poste" : "attaquant",
+        "role" : "joueur",
+        "team" : "P3H",
+        "password" : 11,
+        "licence" : 1,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Axel",
+        "lastname" : "Guiot",
+        "poste" : "défenseur",
+        "role" : "joueur",
+        "team" : "P3H",
+        "password" : 22,
+        "licence" : 2,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Raphaël",
+        "lastname" : "Nadal",
+        "poste" : null,
+        "role" : "caoch",
+        "team" : "P3H",
+        "password" : 33,
+        "licence" : 3,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Simon",
+        "lastname" : "Petit",
+        "poste" : "passeur",
+        "role" : "joueur",
+        "team" : "P3H",
+        "password" : 44,
+        "licence" : 4,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Bryan",
+        "lastname" : "Leroy",
+        "poste" : "opposite",
+        "role" : "joueur",
+        "team" : "P3H",
+        "password" : 55,
+        "licence" : 5,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Renauld",
+        "lastname" : "Lenoble",
+        "poste" : "libéro",
+        "role" : "joueur",
+        "team" : "P3H",
+        "password" : 66,
+        "licence" : 6,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Thomas",
+        "lastname" : "Carpentier",
+        "poste" : "central",
+        "role" : "joueur",
+        "team" : "P3H",
+        "password" : 77,
+        "licence" : 7,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Jesse",
+        "lastname" : "Gillet",
+        "poste" : "attaquant",
+        "role" : "joueur",
+        "team" : "P3H",
+        "password" : 88,
+        "licence" : 8,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Lucas",
+        "lastname" : "Vanesse",
+        "poste" : "passeur",
+        "role" : "joueur",
+        "team" : "P3H",
+        "password" : 99,
+        "licence" : 9,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Carole",
+        "lastname" : "Gérard",
+        "poste" : "centrale",
+        "role" : "joueuse",
+        "team" : "P3D",
+        "password" : 1010,
+        "licence" : 10,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Sophie",
+        "lastname" : "Mathieu",
+        "poste" : "attaquante",
+        "role" : "joueuse",
+        "team" : "P3D",
+        "password" : 1111,
+        "licence" : 11,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Aubane",
+        "lastname" : "Herman",
+        "poste" : "passeuse",
+        "role" : "joueuse",
+        "team" : "P3D",
+        "password" : 1212,
+        "licence" : 12,
+        "isPresent" : "En attente"
+    },
+    {
+        "firstname" : "Mathilde",
+        "lastname" : "Mangin",
+        "poste" : null,
+        "role" : "caoch",
+        "team" : "P3D",
+        "password" : 1313,
+        "licence" : 13,
+        "isPresent" : "En attente"
+    }
+]
