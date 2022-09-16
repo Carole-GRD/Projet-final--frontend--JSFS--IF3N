@@ -26,7 +26,7 @@ function App() {
         anchor='left'
         open={toogleDrawer}
         onClose={() => setToogleDrawer(false)}>
-        <NavBar />
+        <NavBar onSelectedMenu={() => setToogleDrawer(false)} />
       </Drawer>
       <div className="App">
         {element}

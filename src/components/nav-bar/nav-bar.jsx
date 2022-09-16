@@ -1,5 +1,6 @@
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
 
 import HomeIcon from '@mui/icons-material/Home';
 import SportsHandballIcon from '@mui/icons-material/SportsHandball';
@@ -7,7 +8,8 @@ import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import GradeIcon from '@mui/icons-material/Grade';
 import GroupsIcon from '@mui/icons-material/Groups';
 
-const NavBar = ({onCloseMenu}) => {
+
+const NavBar = ({/*onCloseMenu*/ onSelectedMenu}) => {
 
     return (
         <div className='nav'>
@@ -21,11 +23,11 @@ const NavBar = ({onCloseMenu}) => {
             </article>
             <hr />
             <ul>
-                <li><Link to="/accueil" onClick={() => onCloseMenu()}><HomeIcon />Accueil</Link></li>
-                <li><Link to="/effectif" onClick={() => onCloseMenu()}><SportsHandballIcon />Effectif</Link></li>
-                <li><Link to="/calendrier" onClick={() => onCloseMenu()}><EventAvailableIcon />Calendrier</Link></li>
-                <li><Link to="/classement" onClick={() => onCloseMenu()}><GradeIcon />Classement</Link></li>
-                <li><Link to="/equipe" onClick={() => onCloseMenu()}><GroupsIcon />Équipes</Link></li>
+                <li><Link to="/home" onClick={onSelectedMenu}><HomeIcon />Accueil</Link></li>
+                <li><Link to="/user" onClick={onSelectedMenu}><SportsHandballIcon />Effectif</Link></li>
+                <li><Link to="/calendar" onClick={onSelectedMenu}><EventAvailableIcon />Calendrier</Link></li>
+                <li><Link to="/rating" onClick={onSelectedMenu}><GradeIcon />Classement</Link></li>
+                <li><Link to="/team"  onClick={onSelectedMenu}><GroupsIcon />Équipes</Link></li>
             </ul>
         </div>
         

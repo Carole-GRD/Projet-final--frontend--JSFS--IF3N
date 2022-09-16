@@ -1,12 +1,19 @@
 import SportsVolleyballIcon from '@mui/icons-material/SportsVolleyball';
 
 
-
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
+import { logoutUser } from '../../store/actions/auth-action';
 
 const Header = ({ onOpenMenu }) => {
+
+
+    const dispatch = useDispatch();
+    // console.log(logoutUser);
+    const handleLogout = () =>{
+        dispatch(logoutUser());
+    }
 
     return (
         <>
@@ -19,8 +26,9 @@ const Header = ({ onOpenMenu }) => {
                 <h2>React Volley Club</h2>
 
                 <div className='btn'>
-                    <Link to='/connexion'><button className='login'>Login</button></Link>
-                    <button className='logout'>Logout</button>
+                    <Link to='/login'><button className='login'>Login</button></Link>
+                    <Link to='/register'><button className='register'>Register</button></Link>
+                    <button onClick={handleLogout} className='logout'>Logout</button>
                 </div>
 
             </div>

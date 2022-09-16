@@ -5,7 +5,8 @@ import { loginUser, registerUser, logoutUser } from '../actions/auth-action';
 const initialState = {
     isConnected: false,
     token: null,
-    errorMsg: null
+    errorMsg: null,
+    userId: ''
 };
 
 const authReducer = createReducer(initialState, (builder) => {
@@ -18,7 +19,8 @@ const authReducer = createReducer(initialState, (builder) => {
         })
         .addCase(loginUser.fulfilled, (state, action) => {
             state.isConnected = true;
-            state.token = action.payload;
+            state.token = action.payload.token;
+            state.userId = action.payload.userId;
             state.errorMsg = null;
             
         })
@@ -33,6 +35,7 @@ const authReducer = createReducer(initialState, (builder) => {
         .addCase(logoutUser, (state, action) => {
             state.isConnected = false;
             state.token = null;
+            state.userId = '';
             state.errorMsg = null;
         });
 });

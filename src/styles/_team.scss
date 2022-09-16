@@ -1,0 +1,11 @@
+main {
+    margin-top: 100px;
+    margin-left: 200px;
+}
+
+.gridTeam {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    padding: 1em;
+}

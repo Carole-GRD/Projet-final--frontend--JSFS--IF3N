@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './reducers/auth-reducer';
-
+import teamReducer from './reducers/team-reducer';
 
 
 const store = configureStore({
     reducer: {
-        auth: authReducer
+        auth: authReducer,
+        teams: teamReducer
     },
     devTools: process.env.NODE_ENV !== 'production'
     // ↑ précise la variable d'environnement ->  dev  

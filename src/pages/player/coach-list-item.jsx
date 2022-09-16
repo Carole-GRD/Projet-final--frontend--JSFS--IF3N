@@ -1,15 +1,14 @@
 
-const PlayerListItem = ({firstname, lastname, position}) => {
 
+const CoachListItem = ({firstname, lastname}) => {
 
     return (
         <>            
             <div className='cardPlayer'>
                 <p>{firstname} {lastname}</p>
-                <p>{position}</p>
             </div>
         </>
     );
 };
 
-export default PlayerListItem;
+export default CoachListItem;
