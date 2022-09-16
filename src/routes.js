@@ -1,6 +1,6 @@
 import Home from "./pages/home/home";
 import PlayerList from "./pages/player/player-list";
-import Calendar from "./pages/calendar/calendar";
+import CalendarList from "./pages/calendar/calendar-list";
 import Rating from "./pages/rating/rating";
 import TeamList from "./pages/team/team-list";
 import NotFound from "./pages/errors/not-found";
@@ -24,7 +24,7 @@ export const routes = [
     },
     {
         path:'calendar',
-        element: <Calendar />
+        element: <CalendarList />
     },
     {
         path:'rating',

@@ -42,7 +42,9 @@ const PlayerList = () =>{
                 {teamName === '' && <h1>Liste de tous les membres du React Volley Club</h1>}
                 {teamName !== '' && <h1>Liste de tous les membres de l'équipe : {teamName}</h1>}
                 <h2>Coach(s)</h2>
+                <div className='gridPlayer'>
                     {listCoach.map(coach => <CoachListItem key={coach._id} {...coach}/>)}
+                </div>
                 <h2>Joueurs</h2>
                 <div className='gridPlayer'>
                     {listPlayers.map(user => <PlayerListItem key={user.id} {...user}/>)}
