@@ -9,7 +9,7 @@ import GradeIcon from '@mui/icons-material/Grade';
 import GroupsIcon from '@mui/icons-material/Groups';
 
 
-const NavBar = ({/*onCloseMenu*/ onSelectedMenu}) => {
+const NavBar = ({onSelectedMenu}) => {
 
     return (
         <div className='nav'>

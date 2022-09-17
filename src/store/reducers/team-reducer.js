@@ -2,19 +2,19 @@ import { createReducer } from '@reduxjs/toolkit';
 import { setTeam, resetTeam } from '../actions/team-action';
 
 const initialState = {
-    teamName: '',
-    teamId: ''
+    teamSelectedName: '',
+    teamSelectedId: ''
 }
 
 const teamReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(setTeam, (state, action) => {
-            state.teamName = action.payload.name;
-            state.teamId = action.payload.teamId
+            state.teamSelectedName = action.payload.name;
+            state.teamSelectedId = action.payload.teamId
         })
         .addCase(resetTeam,(state, action) => {
-            state.teamName = '';
-            state.teamId = ''
+            state.teamSelectedName = '';
+            state.teamSelectedId = ''
         })
 });
 
