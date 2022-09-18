@@ -6,12 +6,12 @@ import axios from 'axios';
 const CalendarList = () =>{
 
     const [listEvent, setListEvent] = useState([]);
-    const teamId = useSelector(state => state.teams.teamId);
-    const teamName = useSelector(state => state.teams.teamName);
+    const teamSelectedId = useSelector(state => state.teams.teamSelectedId);
+    const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
 
     useEffect(() => {
-        if (teamId !== '') {
-            axios.get(`http://localhost:8080/api/event/team/${teamId}`)
+        if (teamSelectedId !== '') {
+            axios.get(`http://localhost:8080/api/event/team/${teamSelectedId}`)
                 .then((response) => {
                     // console.log(response);
                     setListEvent(response.data);
@@ -24,15 +24,15 @@ const CalendarList = () =>{
                 setListEvent(response.data);
             })
         } 
-    }, [teamId]);
+    }, [teamSelectedId]);
 
 
     return (
         <>
             <main>
                 <h1>Calendrier</h1>
-                {teamName === '' && <h1>Liste de toutes les activités du React Volley Club</h1>}
-                {teamName !== '' && <h1>Liste de toutes les activités de l'équipe : {teamName}</h1>}
+                {teamSelectedName === '' && <h1>Liste de toutes les activités du React Volley Club</h1>}
+                {teamSelectedName !== '' && <h1>Liste de toutes les activités de l'équipe : {teamSelectedName}</h1>}
                 <div className='gridEvent'>
                     {listEvent.map(event => <CalendarListItem key={event._id} {...event}/>)}
                 </div>

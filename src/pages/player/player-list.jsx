@@ -11,6 +11,9 @@ const PlayerList = () =>{
     const [listCoach, setListCoach] = useState([]);
     const teamSelectedId = useSelector(state => state.teams.teamSelectedId);
     const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // const isConnected = useSelector(state => state.auth.isConnected);
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     useEffect(() => {
         if (teamSelectedId !== '') {
@@ -39,11 +42,14 @@ const PlayerList = () =>{
     return (
         <>
             <main>
+                {/* {(teamSelectedName === '' && isConnected === false) && <h1>Liste de tous les membres du React Volley Club</h1>} */}
+                {/* {isConnected === true && <h1>Liste de tous les membres de ton équipe ! (variable pour l'équipe !=</h1>} */}
                 {teamSelectedName === '' && <h1>Liste de tous les membres du React Volley Club</h1>}
                 {teamSelectedName !== '' && <h1>Liste de tous les membres de l'équipe : {teamSelectedName}</h1>}
-                <h2>Coach(s)</h2>
+                {teamSelectedName === '' && <h2>Coachs</h2>}
+                {teamSelectedName !== '' && <h2>Coach</h2>}
                 <div className='gridPlayer'>
-                    {listCoach.map(coach => <CoachListItem key={coach._id} {...coach}/>)}
+                    {listCoach.map(coach => <CoachListItem key={coach.id} {...coach}/>)}
                 </div>
                 <h2>Joueurs</h2>
                 <div className='gridPlayer'>

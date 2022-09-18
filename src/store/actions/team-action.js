@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const setTeam = createAction('team/user', (teamId) => ({
-    payload : teamId
+export const setTeam = createAction('team/user', (teamId, coachId) => ({
+    payload : teamId, coachId
 }));
 
 

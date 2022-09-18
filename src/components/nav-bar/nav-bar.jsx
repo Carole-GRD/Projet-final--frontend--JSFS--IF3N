@@ -8,8 +8,7 @@ import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import GradeIcon from '@mui/icons-material/Grade';
 import GroupsIcon from '@mui/icons-material/Groups';
 
-
-const NavBar = ({onSelectedMenu}) => {
+const NavBar = ({onSelectedMenu, _id}) => {
 
     return (
         <div className='nav'>

@@ -3,18 +3,27 @@ import { setTeam, resetTeam } from '../actions/team-action';
 
 const initialState = {
     teamSelectedName: '',
-    teamSelectedId: ''
+    teamSelectedId: '',
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    coachId : ''
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 }
 
 const teamReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(setTeam, (state, action) => {
             state.teamSelectedName = action.payload.name;
-            state.teamSelectedId = action.payload.teamId
+            state.teamSelectedId = action.payload.teamId;
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            state.coachId = action.payload.coach
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++
         })
         .addCase(resetTeam,(state, action) => {
             state.teamSelectedName = '';
-            state.teamSelectedId = ''
+            state.teamSelectedId = '';
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            state.coachId = ''
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++
         })
 });
 
