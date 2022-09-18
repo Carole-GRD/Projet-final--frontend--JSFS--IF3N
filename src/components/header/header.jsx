@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { logoutUser } from '../../store/actions/auth-action';
-
+import { resetTeam } from '../../store/actions/team-action';
 
 const Header = ({ onOpenMenu }) => {
 
@@ -14,6 +14,7 @@ const Header = ({ onOpenMenu }) => {
     // console.log(logoutUser);
     const handleLogout = () =>{
         dispatch(logoutUser());
+        dispatch(resetTeam())
     }
 
     return (

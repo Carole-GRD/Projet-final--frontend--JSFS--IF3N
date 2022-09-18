@@ -6,7 +6,8 @@ import TeamList from "./pages/team/team-list";
 import NotFound from "./pages/errors/not-found";
 import Login from "./pages/auth/login/login";
 import Register from "./pages/auth/register/register";
-import TeamToAdd from "./pages/team/team-to-add/team-to-add";
+import TeamToAdd from "./pages/team/team-list-admin/team-to-add";
+import TeamToUpdate from "./pages/team/team-list-admin/team-to-update";
 
 
 export const routes = [
@@ -37,6 +38,10 @@ export const routes = [
     {
         path:'teamToAdd',
         element: <TeamToAdd />
+    },
+    {
+        path:'teamToUpdate',
+        element: <TeamToUpdate />
     },
     {
         path:'login',
