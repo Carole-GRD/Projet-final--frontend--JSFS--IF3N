@@ -6,14 +6,17 @@ const initialState = {
     isConnected: false,
     token: null,
     errorMsg: null,
-    userId: ''
+    userId: '',
+    userRole: ''
 };
 
 const authReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(registerUser.fulfilled, (state, action) => {
             state.isConnected = true;
-            state.token = action.payload;       // payload -> response.data.token
+            state.token = action.payload.token;       // payload -> response.data
+            state.userId = action.payload.userId;       // payload -> response.data
+            state.userRole = action.payload.userRole;       // payload -> response.data
             state.errorMsg = null;
             
         })
@@ -21,6 +24,7 @@ const authReducer = createReducer(initialState, (builder) => {
             state.isConnected = true;
             state.token = action.payload.token;
             state.userId = action.payload.userId;
+            state.userRole = action.payload.userRole;       
             state.errorMsg = null;
             
         })
@@ -36,6 +40,7 @@ const authReducer = createReducer(initialState, (builder) => {
             state.isConnected = false;
             state.token = null;
             state.userId = '';
+            state.userRole = '';
             state.errorMsg = null;
         });
 });

@@ -1,11 +1,13 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { setTeam, resetTeam } from '../actions/team-action';
 
+
 const initialState = {
     teamSelectedName: '',
     teamSelectedId: '',
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    coachId : ''
+    coachId : '',           
+    teamList : []
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 }
 

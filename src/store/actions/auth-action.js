@@ -6,7 +6,7 @@ export const registerUser = createAsyncThunk('user/register',
 
         // Requete AJAX vers le serveur Backend
         const response = await axios.post('http://localhost:8080/api/auth/register', data);
-        return response.data.token;
+        return response.data;
     }
 );
 
