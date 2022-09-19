@@ -28,7 +28,7 @@ const TeamListItem = ({_id, coach, name, deleteTeam }) => {
     return (
         <>
             <article className='container'>
-                <div className='cardTeam'>
+                <div className='card'>
                     <div role='button' onClick={handleSelectedTeam}>
                         <h3>{name}</h3>
                         <p>Coach : {coach.firstname}</p>

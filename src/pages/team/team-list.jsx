@@ -61,7 +61,7 @@ const TeamList = () => {
                 }
     {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}            
 
-                {<div className='gridTeam'>
+                {<div className='grid'>
                     {teams.map(team => <TeamListItem  deleteTeam={onDeleteTeam} key={team._id} {...team}/>)}
                 </div>}
             </main>

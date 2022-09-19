@@ -32,7 +32,7 @@ const CalendarList = () =>{
                 <h1>Calendrier</h1>
                 {teamSelectedName === '' && <h2>Liste de toutes les activités du React Volley Club</h2>}
                 {teamSelectedName !== '' && <h2>Liste de toutes les activités de l'équipe : {teamSelectedName}</h2>}
-                <div className='gridEvent'>
+                <div className='gridCalendar'>
                     {listEvent.map(event => <CalendarListItem key={event._id} {...event}/>)}
                 </div>
             </main>

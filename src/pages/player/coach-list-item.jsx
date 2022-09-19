@@ -19,11 +19,13 @@ const CoachListItem = ({firstname, lastname, id}) => {
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     return (
-        <>            
-            <div className='cardPlayer'>
-                <p>{firstname} {lastname}</p>
-                <p>{teams.map(team => <UserTeam key={team._id} {...team} />)}</p>
-            </div>
+        <>  
+            <article className='container'>      
+                <div className='card'>
+                    <h3>{firstname} {lastname}</h3>
+                    <p>Équipe(s) : {teams.map(team => <UserTeam key={team._id} {...team} />)}</p>
+                </div>
+            </article>   
         </>
     );
 };

@@ -58,11 +58,11 @@ const PlayerList = () =>{
                 {/* {(userId.role === 'player' || userId.role === 'coach') && <h1>Liste de tous les membres de l'équipe : {teamUserConnected[0].name}</h1>} */}
                 {teamSelectedName === '' && <h2>Coachs</h2>}
                 {teamSelectedName !== '' && <h2>Coach</h2>}
-                <div className='gridPlayer'>
+                <div className='grid'>
                     {listCoach.map(coach => <CoachListItem key={coach.id} {...coach}/>)}
                 </div>
                 <h2>Joueurs</h2>
-                <div className='gridPlayer'>
+                <div className='grid'>
                     {listPlayers.map(user => <PlayerListItem key={user.id} {...user}/>)}
                 </div>
             </main>

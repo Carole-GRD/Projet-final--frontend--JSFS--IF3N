@@ -1,0 +1,65 @@
+
+.gridCalendar {
+    display: grid;
+    gap: 1em;
+    width: 65vw;
+}
+
+.containerCalendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    margin: 2%;
+    border: none;
+    border-radius: 5px;
+    background-color: $color-7;
+    cursor: pointer;
+    .cardCalendar {
+        // display: inline-block;
+        margin: 2%;
+        width: 60vw;
+        // text-align: center;
+        // margin-left: 10%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: $color-5;
+        .cardTextCalendar {
+            padding-left: 10%;
+        }
+        .buttonPlayer {
+            display: flex;
+            justify-content: center;
+            button {
+                margin: 2% 5%;
+                border: none;
+                padding: 2.5% 8%;
+                // width: 100px;
+                color: $color-71;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-size: 1.2rem;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .buttonPresent {
+                background-color: $color-3;
+            }
+            .buttonAbsent {
+                background-color: $color-4;
+
+            }
+        }
+        
+    }
+}
+
+// .buttonAdmin {
+//     border: none;
+//     padding: 5px 10px;
+//     width: 100px;
+//     color: $color-71;
+//     font-family: Verdana, Geneva, Tahoma, sans-serif;
+//     font-size: 0.9rem;
+//     background-color: $color-2;
+//     border-radius: 5px;
+//     cursor: pointer;
+// }
