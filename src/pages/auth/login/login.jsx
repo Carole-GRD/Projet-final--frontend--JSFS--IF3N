@@ -35,7 +35,6 @@ const Login = () => {
                     <input id='password' type='text' placeholder='Mot de passe' {...register('password')} />
                     <button type='submit'>Connexion</button>
                     
-
                     {errorMsg && (
                         <p>{errorMsg}</p>
                     )}

@@ -24,6 +24,12 @@ function App() {
         onOpenMenu={() => setToogleDrawer(true)} />
       <Drawer
         anchor='left'
+        PaperProps={{
+          sx: {
+            backgroundColor: "rgba(214, 214, 214, 1)",
+            width: 300
+          }
+        }}
         open={toogleDrawer}
         onClose={() => setToogleDrawer(false)}>
         <NavBar onSelectedMenu={() => setToogleDrawer(false)} />

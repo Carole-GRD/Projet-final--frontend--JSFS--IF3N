@@ -11,7 +11,7 @@ const CalendarListItem = ({teamId, name, place, date, time, opposingTeam/*, pres
         <>
             <div className='cardEvent'>
                 <h3>{name}</h3>
-                <h4>{(isConnected === false || teamSelectedName === '') && teamId.name}</h4>
+                <h4>{(isConnected === false && teamSelectedName === '') && teamId.name}</h4>
                 <p>{opposingTeam !== '' && 'React VC - ' + opposingTeam}</p>
                 <p>{date}</p>
                 <p>{time}</p>

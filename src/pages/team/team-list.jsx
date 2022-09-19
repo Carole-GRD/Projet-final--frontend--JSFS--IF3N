@@ -10,12 +10,11 @@ import { useSelector } from 'react-redux';
 
 const TeamList = () => {
 
-    const [teams, setTeams, updateTeams] = useState([]);
+    const [teams, setTeams/*, updateTeams*/] = useState([]);
     // +++++++++++++++++++++++++++++++++++++++++++++++
     const userRole = useSelector(state => state.auth.userRole);
     const isConnected = useSelector(state => state.auth.isConnected);
     const userId = useSelector(state => state.auth.userId);
-  
 
     
     useEffect(() => {
@@ -57,7 +56,7 @@ const TeamList = () => {
 
     {/* Si l'utilisateur connecté est 'admin' alors il a accès aux différents boutons lui permettant d'ajouter, modifier ou supprimer une équipe */}
                 {(isConnected === true && userRole === 'admin') ?
-                    <Link to='/teamToAdd'><button>Ajouter une équipe</button></Link>
+                    <Link to='/teamToAdd'><button className='buttonAdmin'>Ajouter une équipe</button></Link>
                     : null
                 }
     {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}            

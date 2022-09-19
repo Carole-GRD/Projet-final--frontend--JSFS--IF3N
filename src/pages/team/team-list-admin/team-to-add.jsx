@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const TeamToAdd = () => {
@@ -51,6 +51,7 @@ const TeamToAdd = () => {
                         <p>{errorMsg}</p>
                         )} */}
                 </form>
+                <Link to='/team'><button>Retourner à la liste des équipes</button></Link>
             </main>
         </>
     );

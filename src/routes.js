@@ -40,7 +40,7 @@ export const routes = [
         element: <TeamToAdd />
     },
     {
-        path:'teamToUpdate',
+        path:'teamToUpdate/:teamId',
         element: <TeamToUpdate />
     },
     {

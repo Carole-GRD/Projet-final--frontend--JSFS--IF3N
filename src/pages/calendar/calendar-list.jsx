@@ -8,7 +8,6 @@ const CalendarList = () =>{
     const [listEvent, setListEvent] = useState([]);
     const teamSelectedId = useSelector(state => state.teams.teamSelectedId);
     const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
-    const userRole = useSelector(state => state.auth.userRole);
 
     useEffect(() => {
         if (teamSelectedId !== '') {
@@ -26,7 +25,6 @@ const CalendarList = () =>{
             })
         } 
     }, [teamSelectedId]);
-
 
     return (
         <>
