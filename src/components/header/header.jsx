@@ -22,7 +22,7 @@ const Header = ({ onOpenMenu }) => {
             <div className='header'>
             
                 <button onClick={() => onOpenMenu()} className='menu'>
-                    <SportsVolleyballIcon className='sportsVolleyballIcon' />
+                    <SportsVolleyballIcon fontSize='large' className='sportsVolleyballIcon' />
                 </button>
 
                 <h2>React Volley Club</h2>

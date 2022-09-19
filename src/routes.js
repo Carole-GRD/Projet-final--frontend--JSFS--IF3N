@@ -8,6 +8,7 @@ import Login from "./pages/auth/login/login";
 import Register from "./pages/auth/register/register";
 import TeamToAdd from "./pages/team/team-list-admin/team-to-add";
 import TeamToUpdate from "./pages/team/team-list-admin/team-to-update";
+import MatchSheet from "./pages/calendar/match-sheet/match-sheet";
 
 
 export const routes = [
@@ -26,6 +27,10 @@ export const routes = [
     {
         path:'calendar',
         element: <CalendarList />
+    },
+    {
+        path:'matchSheet',
+        element: <MatchSheet />
     },
     {
         path:'rating',

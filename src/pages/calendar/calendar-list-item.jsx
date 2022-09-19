@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CalendarListItem = ({teamId, name, place, date, time, opposingTeam/*, presentId, absentId*/}) => {
 
@@ -19,19 +19,24 @@ const CalendarListItem = ({teamId, name, place, date, time, opposingTeam/*, pres
                         <p>{time}</p>
                         <p>{place !== '' && 'Lieu : ' + place}</p>
                     </div>
-                    <div>
+                    <div className='containerButton'>
                         {(isConnected && userRole === 'player') && 
                             <div className='buttonPlayer'>
                                 <button className='buttonPresent'>Présent</button>
                                 <button className='buttonAbsent'>Absent</button>
                             </div>
                         }
-                        {/* {isConnected && 
+                        {(isConnected && teamSelectedName !== '') &&
                         // route avec un id 'detailEvent'
                         // faire une page detail avec toutes les infos de l'évènement choisi 
                         // sur la page faire une requête 
-                            <Link><button>Voir la feuille de match</button></Link>
-                        } */}
+                            // <div className='buttonConnected'>
+                            //     <Link to='/matchSheet'><button className='matchSheet'>Voir la feuille de match</button></Link>
+                            // </div>
+
+                            <Link to='/matchSheet'><button className='matchSheet'>Voir la feuille de match</button></Link>
+
+                        }
                     </div>
                 </div>
             </article>

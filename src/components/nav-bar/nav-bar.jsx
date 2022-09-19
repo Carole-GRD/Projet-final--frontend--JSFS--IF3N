@@ -15,18 +15,18 @@ const NavBar = ({onSelectedMenu, _id}) => {
             {/* ↓ voir fichier _header.scss */}
             <article>
                 <div>
-                    <p>Photo</p>
+                    <h2>Photo</h2>
                 </div>
                 <p>Prénom Nom</p>
                 <p>Équipe</p>
             </article>
             <hr />
             <ul>
-                <li><Link to="/home" onClick={onSelectedMenu}><HomeIcon />Accueil</Link></li>
-                <li><Link to="/user" onClick={onSelectedMenu}><SportsHandballIcon />Effectif</Link></li>
-                <li><Link to="/calendar" onClick={onSelectedMenu}><EventAvailableIcon />Calendrier</Link></li>
-                <li><Link to="/rating" onClick={onSelectedMenu}><GradeIcon />Classement</Link></li>
-                <li><Link to="/team"  onClick={onSelectedMenu}><GroupsIcon />Équipes</Link></li>
+                <li><Link to="/home" onClick={onSelectedMenu}><HomeIcon className='iconNavBar' />Accueil</Link></li>
+                <li><Link to="/user" onClick={onSelectedMenu}><SportsHandballIcon className='iconNavBar' />Effectif</Link></li>
+                <li><Link to="/calendar" onClick={onSelectedMenu}><EventAvailableIcon className='iconNavBar' />Calendrier</Link></li>
+                <li><Link to="/rating" onClick={onSelectedMenu}><GradeIcon className='iconNavBar' />Classement</Link></li>
+                <li><Link to="/team"  onClick={onSelectedMenu}><GroupsIcon className='iconNavBar' />Équipes</Link></li>
             </ul>
         </div>
         

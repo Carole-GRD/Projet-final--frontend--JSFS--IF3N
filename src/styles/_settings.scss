@@ -24,7 +24,7 @@ $color-3: #0DF205;
 $color-4: #F29F05;
 $color-5: #0D0D0D;
 $color-6: #aeaeae;
-$color-7: rgb(214, 214, 214);
+$color-7: rgb(235, 235, 235);
 $color-71: #f7f7f7;
 $color-8: crimson;
 
@@ -37,10 +37,12 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #04d9c429;
-    // font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(to bottom right, #b6e3ffe5, #b6e3ffe5), url('../assets/img/filet_ciel.jpg');
     main {
         margin-top: 100px;
         margin-left: 200px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
