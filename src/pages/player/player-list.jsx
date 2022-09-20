@@ -3,7 +3,8 @@ import CoachListItem from "./coach-list-item";
 import PlayerListItem from "./player-list-item";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { resetTeam } from "../../store/actions/team-action";
 
 const PlayerList = () =>{
 
@@ -11,11 +12,6 @@ const PlayerList = () =>{
     const [listCoach, setListCoach] = useState([]);
     const teamSelectedId = useSelector(state => state.teams.teamSelectedId);
     const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
-    // +++++++++++++++++++++++++++++++++++++++++++++++
-    // const [teamUserConnected, setTeamUserConnected] = useState('');
-    // const isConnected = useSelector(state => state.auth.isConnected);
-    // const userId = useSelector(state => state.auth.userId);
-    // +++++++++++++++++++++++++++++++++++++++++++++++
 
     useEffect(() => {
         if (teamSelectedId !== '') {
@@ -26,7 +22,7 @@ const PlayerList = () =>{
                     setListCoach([response.data.coach])
                 })
         }
-        else {
+        if (teamSelectedId === '') {
             axios.get(`http://localhost:8080/api/user?role=player`)
             .then((response) => {
                 // console.log(response);
@@ -38,32 +34,34 @@ const PlayerList = () =>{
                 setListCoach(response.data);
             })
         } 
-        // if (isConnected === true) {
-        //     axios.get(`http://localhost:8080/api/team/user/${userId}`)
-        //         .then((response) => {
-        //             // console.log(response.data);
-        //             setTeamUserConnected(response.data)
-        //         })
-        // }
-    }, [teamSelectedId/*, userId*/]);
+    }, [teamSelectedId, resetTeam]);
 
-    // console.log(teamUserConnected[0].name);
+    const dispatch = useDispatch();
+    const setAllMembers = () => {
+        dispatch(resetTeam());
+    }
+
     return (
         <>
             <main>
-                {/* {(teamSelectedName === '' && isConnected === false) && <h1>Liste de tous les membres du React Volley Club</h1>} */}
-                {/* {isConnected === true && <h1>Liste de tous les membres de ton équipe ! (variable pour l'équipe !=</h1>} */}
                 {teamSelectedName === '' ? <h1>Liste de tous les membres du React Volley Club</h1> : null}
                 {teamSelectedName !== '' && <h1>Liste de tous les membres de l'équipe : {teamSelectedName}</h1>}
-                {/* {(userId.role === 'player' || userId.role === 'coach') && <h1>Liste de tous les membres de l'équipe : {teamUserConnected[0].name}</h1>} */}
+                
+                <div className='containerButton'>
+                    {teamSelectedName !== '' &&
+                        <button onClick={setAllMembers} className='button'>Voir tous les membres</button>
+                    }
+                </div>
+
                 {teamSelectedName === '' && <h2>Coachs</h2>}
                 {teamSelectedName !== '' && <h2>Coach</h2>}
                 <div className='grid'>
-                    {listCoach.map(coach => <CoachListItem key={coach.id} {...coach}/>)}
+                    {listCoach.map(coach => <CoachListItem key={coach._id} {...coach}/>)}
                 </div>
+
                 <h2>Joueurs</h2>
                 <div className='grid'>
-                    {listPlayers.map(user => <PlayerListItem key={user.id} {...user}/>)}
+                    {listPlayers.map(user => <PlayerListItem key={user._id} {...user}/>)}
                 </div>
             </main>
             

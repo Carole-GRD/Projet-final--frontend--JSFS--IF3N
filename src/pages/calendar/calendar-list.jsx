@@ -13,7 +13,7 @@ const CalendarList = () =>{
         if (teamSelectedId !== '') {
             axios.get(`http://localhost:8080/api/event/team/${teamSelectedId}`)
                 .then((response) => {
-                    // console.log(response);
+                    // console.log(response.data);
                     setListEvent(response.data);
                 })
         }

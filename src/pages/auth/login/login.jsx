@@ -17,13 +17,14 @@ const Login = () => {
     
     useEffect(() => {
         if (isConnected) {
-            navigate('/home');
+            navigate('/team');
         }
     }, [isConnected, navigate])
 
     const onLogin = (data) => {
         dispatch(loginUser(data));
         reset();
+        navigate('/team')
     }
 
     return (

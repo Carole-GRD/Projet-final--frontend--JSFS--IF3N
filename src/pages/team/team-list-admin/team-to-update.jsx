@@ -7,11 +7,14 @@ const TeamToUpdate = () => {
 
     const { teamId } = useParams();
     const { handleSubmit, register, setValue } = useForm();
-
+    const [listPlayer, setListPlayer] = useState([]);
+    
     useEffect(() => {
         axios.get(`http://localhost:8080/api/team/${teamId}`)
             .then(function(response) {
-                // console.log(response);
+                console.log(response);
+                setListPlayer(response.data.userId);
+                
                 const inputModification = ['name', 'coach'];
                 inputModification.forEach(input => {setValue(input, response.data[input])});
             })
@@ -42,6 +45,10 @@ const TeamToUpdate = () => {
             });
     }
 
+    const onPlayerDelete = (_id) => {
+        console.log(_id);
+    }
+
     return (
         <>
             <main>
@@ -51,8 +58,15 @@ const TeamToUpdate = () => {
                     <select id='coach' {...register('coach')}>
                         {coachList.map(coach => <option key={coach.id} value={coach.id}>{coach.firstname} {coach.lastname}</option>)}
                     </select>
+                    
                     <button type='submit'>Modifier</button>
                 </form>
+                {listPlayer.map(player => 
+                        <div>
+                            <div>{player.firstname} {player.lastname}</div>
+                            <button onClick={() => {onPlayerDelete(player._id)}}>Supprimer</button>
+                        </div>    
+                    )}
                 <Link to='/team'><button>Retourner à la liste des équipes</button></Link>
             </main>
         </>

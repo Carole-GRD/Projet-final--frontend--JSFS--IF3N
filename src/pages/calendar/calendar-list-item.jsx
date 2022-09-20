@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 
-const CalendarListItem = ({teamId, name, place, date, time, opposingTeam/*, presentId, absentId*/}) => {
+const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam/*, presentId, absentId*/}) => {
 
     const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
     const isConnected = useSelector(state => state.auth.isConnected);
@@ -27,15 +27,10 @@ const CalendarListItem = ({teamId, name, place, date, time, opposingTeam/*, pres
                             </div>
                         }
                         {(isConnected && teamSelectedName !== '') &&
-                        // route avec un id 'detailEvent'
-                        // faire une page detail avec toutes les infos de l'évènement choisi 
-                        // sur la page faire une requête 
-                            // <div className='buttonConnected'>
-                            //     <Link to='/matchSheet'><button className='matchSheet'>Voir la feuille de match</button></Link>
-                            // </div>
-
-                            <Link to='/matchSheet'><button className='matchSheet'>Voir la feuille de match</button></Link>
-
+                            // route avec un id 'detailEvent'
+                            // faire une page detail avec toutes les infos de l'évènement choisi 
+                            // sur la page faire une requête 
+                            <Link to={`/matchSheet/${_id}`}><button className='matchSheet'>Voir la feuille de match</button></Link>
                         }
                     </div>
                 </div>

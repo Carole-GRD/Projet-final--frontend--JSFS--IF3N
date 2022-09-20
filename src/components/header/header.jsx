@@ -2,8 +2,7 @@ import SportsVolleyballIcon from '@mui/icons-material/SportsVolleyball';
 
 
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../store/actions/auth-action';
 import { resetTeam } from '../../store/actions/team-action';
 
@@ -11,10 +10,11 @@ const Header = ({ onOpenMenu }) => {
 
 
     const dispatch = useDispatch();
-    // console.log(logoutUser);
+    const navigate = useNavigate();
     const handleLogout = () =>{
         dispatch(logoutUser());
-        dispatch(resetTeam())
+        dispatch(resetTeam());
+        navigate('/team')
     }
 
     return (

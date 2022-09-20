@@ -39,26 +39,37 @@
                     margin: 10px 25px 10px 25px;
                     color: $color-71;
                     font-family: Verdana, Geneva, Tahoma, sans-serif;
-                    font-size: 1.2rem;
+                    font-size: 1.5rem;
+                    font-weight: 500;
                     border-radius: 5px;
                     cursor: pointer;
                 }
                 .buttonPresent {
-                    background-color: $color-3;
+                    // background-color: $color-3;
+                    border: 2px solid $color-3;
+                    color: $color-3;
+                    background-color: $color-71;
                 }
                 .buttonAbsent {
-                    background-color: $color-4;
+                    // background-color: $color-4;
+                    border: 2px solid $color-4;
+                    color: $color-4;
+                    background-color: $color-71;
                 }
             }
             .matchSheet {
                 margin-bottom: 5%;
-                background-color: $color-2;
                 padding: 4% 15%;
                 border: none;
                 padding: 10px 30px;
-                color: $color-71;
+                // background-color: $color-2;
+                // color: $color-71;
+                border: 2px solid $color-2;
+                color: $color-2;
+                background-color: $color-71;
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                font-weight: 500;
                 border-radius: 5px;
                 cursor: pointer;
             }
@@ -67,14 +78,3 @@
     }
 }
 
-// .buttonAdmin {
-//     border: none;
-//     padding: 5px 10px;
-//     width: 100px;
-//     color: $color-71;
-//     font-family: Verdana, Geneva, Tahoma, sans-serif;
-//     font-size: 0.9rem;
-//     background-color: $color-2;
-//     border-radius: 5px;
-//     cursor: pointer;
-// }
