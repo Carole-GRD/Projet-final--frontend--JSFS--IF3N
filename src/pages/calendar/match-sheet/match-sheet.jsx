@@ -36,13 +36,30 @@ const MatchSheet = () => {
     const onIsPresent = (idPlayer) => {
         // console.log(idPlayer);   // → identifiant du joueur qui clique sur le bouton 'present'
 
-        // ++++++++++++++++++++++++++++++++   pas besoin dans la feuille de match  (match-sheet)
-        // ↓ on retrouve le joueur qui clique sur le bouton 'present' dans la liste de tous les joueurs
-        const userToAdd = listPlayers.find(player => player._id === idPlayer);  
-        // ↓ on l'ajoute à la liste des joueurs présents
-        setListPresents(current => [...current, userToAdd]);                      
-        // ++++++++++++++++++++++++++++++
+    ///////////////////    Remplacé par les conditions ci-dessous     ////////////////////////////////////
+        // // ++++++++++++++++++++++++++++++++   pas besoin dans la feuille de match  (match-sheet)
+        // // ↓ on retrouve le joueur qui clique sur le bouton 'present' dans la liste de tous les joueurs
+        // const userToAdd = listPlayers.find(player => player._id === idPlayer);  
+        // // ↓ on l'ajoute à la liste des joueurs présents
+        // setListPresents(current => [...current, userToAdd]);                      
+        // // ++++++++++++++++++++++++++++++
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        
 
+        const playerAlreadyAnsweredAbsent = listAbsents.find(absent => absent._id === idPlayer)
+
+        if (!playerAlreadyAnsweredAbsent) {
+            const userToAdd = listPlayers.find(player => player._id === idPlayer); 
+            setListPresents(current => [...current, userToAdd]); 
+            console.log(userToAdd);
+        }
+        else {
+            setListAbsents(current => current.filter(player => player._id !== idPlayer))
+            setListPresents(current => [...current, playerAlreadyAnsweredAbsent]); 
+            console.log(playerAlreadyAnsweredAbsent);
+        }
+    
+    
         // mise à jour des données
         // on modifie les données de 'currentEvent' car on a cliqué sur un évènement en particulier (on est sur la feuille de match de cet évènement) !
         const data = {
@@ -68,14 +85,28 @@ const MatchSheet = () => {
             })
     }
 
+
+
+
     const onIsAbsent = (idPlayer) => {
         // console.log(idPlayer);    // → identifiant du joueur qui clique sur le bouton 'absent'
 
-        // ↓ on retrouve le joueur qui clique sur le bouton 'absent' dans la liste de tous les joueurs
-        const userToAdd = listPlayers.find(player => player._id === idPlayer);  
-        // ↓ on l'ajoute à la liste des joueurs absents  
-        setListAbsents(current => [...current, userToAdd]);
+        const playerAlreadyAnsweredPresent = listPresents.find(present => present._id === idPlayer)
 
+        if (!playerAlreadyAnsweredPresent) {
+            const userToAdd = listPlayers.find(player => player._id === idPlayer); 
+            setListAbsents(current => [...current, userToAdd]); 
+            console.log(userToAdd);
+        }
+        else {
+            setListPresents(current => current.filter(player => player._id !== idPlayer))
+            setListAbsents(current => [...current, playerAlreadyAnsweredPresent]); 
+            console.log(playerAlreadyAnsweredPresent);
+        }
+        // const userToAdd = listPlayers.find(player => player._id === idPlayer); 
+        // setListAbsents(current => [...current, userToAdd]); 
+        // console.log(userToAdd);
+        
         const data = {
             name : currentEvent.name,           
             place : currentEvent.place,
