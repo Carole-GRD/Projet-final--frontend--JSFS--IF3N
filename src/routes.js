@@ -9,7 +9,8 @@ import Register from "./pages/auth/register/register";
 import TeamToAdd from "./pages/team/team-list-admin/team-to-add";
 import TeamToUpdate from "./pages/team/team-list-admin/team-to-update";
 import MatchSheet from "./pages/calendar/match-sheet/match-sheet";
-import DetailEvent from "./pages/calendar/match-sheet/detail-event";
+import UserToUpdate from "./pages/player/user-list-admin/user-to-update";
+
 
 
 export const routes = [
@@ -26,6 +27,10 @@ export const routes = [
         element: <PlayerList />
     },
     {
+        path:'userToUpdate/:id',
+        element: <UserToUpdate />
+    },
+    {
         path:'calendar',
         element: <CalendarList />
     },
@@ -33,14 +38,6 @@ export const routes = [
         path:'matchSheet/:id',
         element: <MatchSheet />
     },
-    {
-        path:'detailEvent',
-        element: <DetailEvent />
-    },
-    // {
-    //     path:'presentPlayerList/:',
-    //     element: <MatchSheet />
-    // },
     {
         path:'rating',
         element: <Rating />

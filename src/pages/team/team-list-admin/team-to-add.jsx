@@ -11,13 +11,19 @@ const TeamToAdd = () => {
     const { handleSubmit, register } = useForm();
     const navigate = useNavigate();
     const [coachList, setCoachList] = useState([]);
+    // const [playerList, setPlayerList] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:8080/api/user?role=coach`)
             .then((response) => {
                 console.log(response);
                 setCoachList(response.data)
-            })
+            })       
+        // axios.get(`http://localhost:8080/api/user?role=player`)
+        //     .then((response) => {
+        //         console.log(response);
+        //         setPlayerList(response.data)
+        //     })
     }, []);
 
     const onRegisterTeam = (data) => {
@@ -38,12 +44,17 @@ const TeamToAdd = () => {
         <>
             <main>
                 <h1>Ajouter une équipe</h1>
+
                 <form onSubmit={handleSubmit(onRegisterTeam)}>
                     <input id="name" type="text" placeholder="Nom de l'équipe" {...register('name')} />
+
                     <select id="coach" {...register('coach')}>
-                        {coachList.map(coach => <option key={coach.id} value={coach.id}>{coach.firstname} {coach.lastname}</option>)}
+                        {coachList.map(coach => <option key={coach._id} value={coach._id}>{coach.firstname} {coach.lastname}</option>)}
                     </select>
-        
+
+                    {/* <select id="userId" {...register('userId')}>
+                        {playerList.map(player => <option key={player._id} value={player._id}>{player.firstname} {player.lastname}</option>)}
+                    </select> */}
 
                     <button type='submit'>Ajouter</button>
 
@@ -51,7 +62,9 @@ const TeamToAdd = () => {
                         <p>{errorMsg}</p>
                         )} */}
                 </form>
+
                 <Link to='/team'><button>Retourner à la liste des équipes</button></Link>
+
             </main>
         </>
     );

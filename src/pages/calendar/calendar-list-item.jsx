@@ -1,12 +1,17 @@
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 
-const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam/*, presentId, absentId*/}) => {
-
+const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, presentId, absentId}) => {
+    // récupérer l'id du joueur actuellement connecté dans le store
+    // 2 fonctions present et absent
+    // l'idPlayer du joueur à ajouter sera dans le store (voir ligne 5)
     const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
     const isConnected = useSelector(state => state.auth.isConnected);
     const userRole = useSelector(state => state.auth.userRole);
-
+    // pas de setListPresent et setListAbsent
+    // dans axios il faut construire les data
+    // les données au lieu d'être dans currentEvent seront directement dans mon composent (CalendarListItem)
+    
     return (
         <>
             <article className='containerCalendar'>
@@ -27,9 +32,6 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam/*,
                             </div>
                         }
                         {(isConnected && teamSelectedName !== '') &&
-                            // route avec un id 'detailEvent'
-                            // faire une page detail avec toutes les infos de l'évènement choisi 
-                            // sur la page faire une requête 
                             <Link to={`/matchSheet/${_id}`}><button className='matchSheet'>Voir la feuille de match</button></Link>
                         }
                     </div>

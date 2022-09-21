@@ -1,11 +1,16 @@
 import { useSelector } from "react-redux";
 
 
-const AllPlayerList = ({lastname, firstname, _id}) => {
+const AllPlayerList = ({lastname, firstname, _id, isPresent}) => {
 
-    // const teamSelectedId = useSelector(state => state.teams.teamSelectedId);
     const userId = useSelector(state => state.auth.userId);
     
+
+    const present = () => {
+        console.log(_id);
+        isPresent(_id);
+    }
+
     return (
         <>  
             <div className='cardAnswer'>
@@ -13,7 +18,8 @@ const AllPlayerList = ({lastname, firstname, _id}) => {
                 {userId === _id &&
                     <div className='containerButton'>
                         <div className='buttonAnswer'>
-                            <button className='buttonPresent'>Présent</button>
+                            {/* <button className='buttonPresent'>Présent</button> */}
+                            <button onClick={present} className='buttonPresent'>Présent</button>
                             <button className='buttonAbsent'>Absent</button>
                         </div>
                     </div>

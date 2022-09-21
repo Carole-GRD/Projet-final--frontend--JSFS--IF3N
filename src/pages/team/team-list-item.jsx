@@ -38,7 +38,7 @@ const TeamListItem = ({_id, coach, name, deleteTeam }) => {
                         {userRole === 'admin' && (
                             <div>
                                 <Link to={`/teamToUpdate/${_id}`}><button className='buttonAdmin'>Modifier</button></Link>
-                                <button onClick={onDelete}  className='buttonAdmin'>Supprimer</button>
+                                <button onClick={onDelete} className='buttonAdmin'>Supprimer</button>
                             </div>
                         )}
                     </div>

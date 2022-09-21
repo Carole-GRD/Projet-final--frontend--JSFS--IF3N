@@ -5,13 +5,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-// import TeamToUpdate from './team-list-admin/team-to-update';
-
 
 const TeamList = () => {
 
     const [teams, setTeams/*, updateTeams*/] = useState([]);
-    // +++++++++++++++++++++++++++++++++++++++++++++++
+
     const userRole = useSelector(state => state.auth.userRole);
     const isConnected = useSelector(state => state.auth.isConnected);
     const userId = useSelector(state => state.auth.userId);
@@ -62,7 +60,7 @@ const TeamList = () => {
     {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}            
 
                 {<div className='grid'>
-                    {teams.map(team => <TeamListItem  deleteTeam={onDeleteTeam} key={team._id} {...team}/>)}
+                    {teams.map(team => <TeamListItem deleteTeam={onDeleteTeam} key={team._id} {...team}/>)}
                 </div>}
             </main>
             

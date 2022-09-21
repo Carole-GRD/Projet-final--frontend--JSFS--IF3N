@@ -5,9 +5,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { resetTeam } from "../../store/actions/team-action";
+import { useParams } from "react-router-dom";
 
 const PlayerList = () =>{
 
+    const { id } = useParams();
     const [listPlayers, setListPlayers] = useState([]);
     const [listCoach, setListCoach] = useState([]);
     const teamSelectedId = useSelector(state => state.teams.teamSelectedId);
@@ -36,9 +38,29 @@ const PlayerList = () =>{
         } 
     }, [teamSelectedId, resetTeam]);
 
+
     const dispatch = useDispatch();
     const setAllMembers = () => {
         dispatch(resetTeam());
+    }
+
+
+    const onDeleteUser = (id) => {
+        axios.delete(`http://localhost:8080/api/user/${id}`)
+            .then((response) => {
+                axios.get(`http://localhost:8080/api/user?role=player`)
+                    .then((response) => {
+                        console.log(response.data);
+                        setListPlayers(response.data);
+                    })
+            })
+            .then((response) => {
+                axios.get(`http://localhost:8080/api/user?role=coach`)
+                    .then((response) => {
+                        setListCoach(response.data);
+                    })
+            })
+            .catch()
     }
 
     return (
@@ -56,12 +78,12 @@ const PlayerList = () =>{
                 {teamSelectedName === '' && <h2>Coachs</h2>}
                 {teamSelectedName !== '' && <h2>Coach</h2>}
                 <div className='grid'>
-                    {listCoach.map(coach => <CoachListItem key={coach._id} {...coach}/>)}
+                    {listCoach.map(coach => <CoachListItem deleteUser={onDeleteUser} key={coach._id} {...coach}/>)}
                 </div>
 
                 <h2>Joueurs</h2>
                 <div className='grid'>
-                    {listPlayers.map(user => <PlayerListItem key={user._id} {...user}/>)}
+                    {listPlayers.map(user => <PlayerListItem deleteUser={onDeleteUser} key={user._id} {...user}/>)}
                 </div>
             </main>
             
