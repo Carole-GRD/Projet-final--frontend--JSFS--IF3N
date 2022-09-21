@@ -7,7 +7,9 @@ const initialState = {
     token: null,
     errorMsg: null,
     userId: '',
-    userRole: ''
+    userRole: '',
+    userFirstName: '',
+    userLastName: ''
 };
 
 const authReducer = createReducer(initialState, (builder) => {
@@ -17,6 +19,8 @@ const authReducer = createReducer(initialState, (builder) => {
             state.token = action.payload.token;       // payload -> response.data
             state.userId = action.payload.userId;       // payload -> response.data
             state.userRole = action.payload.userRole;       // payload -> response.data
+            state.userFirstName = action.payload.userFirstName;       // payload -> response.data
+            state.userLastName = action.payload.userLastName;       // payload -> response.data
             state.errorMsg = null;
             
         })
@@ -24,7 +28,9 @@ const authReducer = createReducer(initialState, (builder) => {
             state.isConnected = true;
             state.token = action.payload.token;
             state.userId = action.payload.userId;
-            state.userRole = action.payload.userRole;       
+            state.userRole = action.payload.userRole;
+            state.userFirstName = action.payload.userFirstName; 
+            state.userLastName = action.payload.userLastName;      
             state.errorMsg = null;
             
         })
@@ -41,6 +47,8 @@ const authReducer = createReducer(initialState, (builder) => {
             state.token = null;
             state.userId = '';
             state.userRole = '';
+            state.userFirstName = ''; 
+            state.userLastName = ''; 
             state.errorMsg = null;
         });
 });
