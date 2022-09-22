@@ -73,7 +73,7 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                 <div className='cardCalendar'>
                     <div className='cardTextCalendar'>
                         <h3>{name}</h3>
-                        <h4>{teamId.name}</h4>                      
+                        <h4>{teamId.name}</h4>                     
                         <p>{opposingTeam !== '' && 'React VC - ' + opposingTeam}</p>
                         <p>{date}</p>
                         <p>{time}</p>
