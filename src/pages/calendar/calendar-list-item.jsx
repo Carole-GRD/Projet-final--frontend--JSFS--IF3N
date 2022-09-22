@@ -1,18 +1,19 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 // import TeamName from "./match-sheet/team-name";
+
 
 const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, presentId, absentId}) => {
     
     const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
     const isConnected = useSelector(state => state.auth.isConnected);
     const userRole = useSelector(state => state.auth.userRole);
-    // const [eventList, setEventList] = useState([]);
+    // const [teamList, setTeamList] = useState([]);
 
     // récupérer l'id du joueur actuellement connecté dans le store
-    const userId = useSelector(state => state.auth.userId);
+    // const userId = useSelector(state => state.auth.userId);
 
     // 2 fonctions present et absent
     // l'idPlayer du joueur à ajouter sera dans le store (userId)
@@ -59,6 +60,7 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
     //     axios.get(`http://localhost:8080/api/team`)
     //         .then((response) =>{
     //             console.log(response);
+    //             setTeamList(response.data)
     //         })
     // }, [])
     
@@ -69,8 +71,7 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                     <div className='cardTextCalendar'>
                         <h3>{name}</h3>
                         {/* {(isConnected === false && teamSelectedName === '') && 
-                            <h4>{eventList.map(<TeamName key={name._id} {...name} />)}</h4>
-                            <h4>teamId.name</h4> ????????
+                            <h4>{teamList.map(team => <TeamName key={team._id} {...team}/>)}</h4>
                         } */}
                         <p>{opposingTeam !== '' && 'React VC - ' + opposingTeam}</p>
                         <p>{date}</p>
@@ -84,6 +85,15 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                                 <button onClick={absent} className='buttonAbsent'>Absent</button>
                             </div>
                         }
+
+                        {/* TODO: ajouter fonction et style */}
+                        {(isConnected && (userRole === 'coach' || userRole === 'admin')) && 
+                            <div>
+                                <button>Modifier</button>
+                                <button>Ajouter</button>
+                            </div>
+                        }
+
                         {(isConnected && teamSelectedName !== '') &&
                             <Link to={`/matchSheet/${_id}`}><button className='matchSheet'>Voir la feuille de match</button></Link>
                         }

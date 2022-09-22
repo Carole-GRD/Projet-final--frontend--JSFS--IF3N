@@ -10,6 +10,7 @@ import TeamToAdd from "./pages/team/team-list-admin/team-to-add";
 import TeamToUpdate from "./pages/team/team-list-admin/team-to-update";
 import MatchSheet from "./pages/calendar/match-sheet/match-sheet";
 import UserToUpdate from "./pages/player/user-list-admin/user-to-update";
+import EventToAdd from "./pages/calendar/calendar-list-admin-coach/event-to-add";
 
 
 
@@ -37,6 +38,10 @@ export const routes = [
     {
         path:'matchSheet/:id',
         element: <MatchSheet />
+    },
+    {
+        path:'eventToAdd',
+        element: <EventToAdd />
     },
     {
         path:'rating',
