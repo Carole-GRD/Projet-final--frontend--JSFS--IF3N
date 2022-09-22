@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 
 
-const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, presentId, absentId, isPresent, isAbsent}) => {
+const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, presentId, absentId, isPresent, isAbsent, deleteEvent}) => {
     
     const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
     const isConnected = useSelector(state => state.auth.isConnected);
@@ -50,6 +50,10 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
             })
     }
     
+    const onDelete = () => {
+        deleteEvent(_id);
+    }
+
     return (
         <>
             <article className='containerCalendar'>
@@ -65,24 +69,29 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                         <p>{place !== '' && 'Lieu : ' + place}</p>
                     </div>
                     <div className='containerButton'>
-                        {(isConnected && userRole === 'player') && 
+
+                        {(userRole === 'player' && teamSelectedName !== '') && 
                             <div className='buttonPlayer'>
-                                {(absentId.some(user => user._id === userId) 
-                                    || (!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId) )) &&
+                                {/* Si le joueur n'est pas dans la liste des absents, ni dans la liste des présents; c'est-à-dire qu'il n'a pas encore répondu */}
+                                {/* ou si le joueur est dans la liste des absents, alors le bouton 'present' s'affiche pour qu'il puisse changer d'avis */}
+                                {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
+                                    || absentId.some(user => user._id === userId) ) &&
                                         <button onClick={present} className='buttonPresent'>Présent</button>
                                 }
-                                {(presentId.some(user => user._id === userId) 
-                                    || (!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId) )) &&
+                                {/* Si le joueur n'est pas dans la liste des absents, ni dans la liste des présents; c'est-à-dire qu'il n'a pas encore répondu */}
+                                {/* ou si le joueur est dans la liste des présents, alors le bouton 'present' s'affiche pour qu'il puisse changer d'avis */}
+                                {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
+                                    || presentId.some(user => user._id === userId) ) &&
                                     <button onClick={absent} className='buttonAbsent'>Absent</button>
                                 }
                             </div>
                         }
 
                         {/* TODO: ajouter fonction et style */}
-                        {(isConnected && (userRole === 'coach' || userRole === 'admin')) && 
+                        {((teamSelectedName !== '' && userRole === 'coach') || userRole === 'admin') && 
                             <div>
                                 <button>Modifier</button>
-                                <button>Ajouter</button>
+                                <button onClick={onDelete}>Supprimer</button>
                             </div>
                         }
 
