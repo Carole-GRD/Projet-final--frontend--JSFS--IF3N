@@ -5,7 +5,6 @@ const AllPlayerList = ({lastname, firstname, _id, isPresent, isAbsent}) => {
 
     const userId = useSelector(state => state.auth.userId);
     
-
     const present = () => {
         // console.log(_id);
         isPresent(_id);
@@ -23,7 +22,6 @@ const AllPlayerList = ({lastname, firstname, _id, isPresent, isAbsent}) => {
                 {userId === _id &&
                     <div className='containerButton'>
                         <div className='buttonAnswer'>
-                            {/* <button className='buttonPresent'>Présent</button> */}
                             <button onClick={present} className='buttonPresent'>Présent</button>
                             <button onClick={absent} className='buttonAbsent'>Absent</button>
                         </div>

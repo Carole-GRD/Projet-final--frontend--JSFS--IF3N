@@ -24,76 +24,36 @@ const MatchSheet = () => {
                 setListPlayers(response.data.userId);
             })  
         setupEvent();
-        // axios.get(`http://localhost:8080/api/event/${id}`)
-        //     .then(function (response) {
-        //         // console.log(response.data);
-        //         setListPresents(response.data.presentId);
-        //         setListAbsents(response.data.absentId);
-        //         setCurrentEvent(response.data);
-        //     })  
     }, [teamSelectedId, id]);
     
     // currentEvent est l'état de la page au chargement, il faut donc la mettre à jour à chaque modification du present absent
     const setupEvent = () => {
         console.log('setup');
         axios.get(`http://localhost:8080/api/event/${id}`)
-        .then(function (response) {
-            // console.log(response.data);
-            setListPresents(response.data.presentId);
-            setListAbsents(response.data.absentId);
-            setCurrentEvent(response.data);
-        })
+            .then(function (response) {
+                // console.log(response.data);
+                setListPresents(response.data.presentId);
+                setListAbsents(response.data.absentId);
+                setCurrentEvent(response.data);
+            })
     }
+
     const onIsPresent = (idPlayer) => {
-        // console.log(idPlayer);   // → identifiant du joueur qui clique sur le bouton 'present'
-
-        // ↓ on retrouve le joueur qui clique sur le bouton 'present' dans la liste de tous les joueurs
-         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        // const userToAdd = listPlayers.find(player => player._id === idPlayer);          // CODE SANS CONDITIONS
-         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        // ↓ on l'ajoute à la liste des joueurs présents
-         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        // setListPresents(current => [...current, userToAdd]);                             // CODE SANS CONDITIONS       
-         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        
-        //////////////////////////////////    Tests conditions     /////////////////////////////////////////////
-        // const playerAlreadyAnsweredAbsent = listAbsents.find(absent => absent._id === idPlayer)
-
-        // if (!playerAlreadyAnsweredAbsent) {
-        //     const userToAdd = listPlayers.find(player => player._id === idPlayer); 
-        //     setListPresents(current => [...current, userToAdd]); 
-        //     console.log(userToAdd);
-        // }
-        // else {
-        //     setListAbsents(current => current.filter(player => player._id !== idPlayer))
-        //     setListPresents(current => [...current, playerAlreadyAnsweredAbsent]); 
-        //     console.log(playerAlreadyAnsweredAbsent);
-        // }
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // mise à jour des données
         // on modifie les données de 'currentEvent' car on a cliqué sur un évènement en particulier (on est sur la feuille de match de cet évènement) !
         const data = {
-            name : currentEvent.name,            //  name : name,   ou juste   name   dans la feuille de match  (match-sheet)
+            name : currentEvent.name,   
             place : currentEvent.place,
             date : currentEvent.date,
             time : currentEvent.time,
             opposingTeam : currentEvent.opposingTeam,
-
             // dans toutes les données de l'évènement, on ne renvoie que l'identifiant des joueurs présents
             // puis on ajoute l'identifiant du nouveau joueur présent
             presentId : [...currentEvent.presentId.map(present => present._id), idPlayer], 
-
             //  ↓ dans la feuille de match  (match-sheet) 
             // presentId : [...presentId.map(present => present._id), id du joueur connecté (store)]  
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////     
-            absentId : currentEvent.absentId.filter(user => user._id !== idPlayer).map(absent => absent._id)             // CODE SANS CONDITIONS
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
-            // absentId : currentEvent.absentId
-            //     .filter(user => listAbsents.some(player => player._id !== idPlayer))
-            //     .map(absent => absent._id)     
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+            absentId : currentEvent.absentId.filter(user => user._id !== idPlayer).map(absent => absent._id)             
         }
         // on lance la requête en lui passant les données à modifier
         axios.put(`http://localhost:8080/api/event/${id}`, data)
@@ -109,39 +69,13 @@ const MatchSheet = () => {
     const onIsAbsent = (idPlayer) => {
         // console.log(idPlayer);    // → identifiant du joueur qui clique sur le bouton 'absent'
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        // const playerAlreadyAnsweredPresent = listPresents.find(present => present._id === idPlayer)
-
-        // if (!playerAlreadyAnsweredPresent) {
-        //     const userToAdd = listPlayers.find(player => player._id === idPlayer); 
-        //     setListAbsents(current => [...current, userToAdd]); 
-        //     console.log(userToAdd);
-        // }
-        // else {
-        //     setListPresents(current => current.filter(player => player._id !== idPlayer))
-        //     setListAbsents(current => [...current, playerAlreadyAnsweredPresent]); 
-        //     console.log(playerAlreadyAnsweredPresent);
-        // }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        // const userToAdd = listPlayers.find(player => player._id === idPlayer);        // CODE SANS CONDITIONS
-        // setListAbsents(current => [...current, userToAdd]);                           // CODE SANS CONDITIONS
-        // console.log(userToAdd);
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        
         const data = {
             name : currentEvent.name,           
             place : currentEvent.place,
             date : currentEvent.date,
             time : currentEvent.time,
             opposingTeam : currentEvent.opposingTeam,
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
-            presentId : currentEvent.presentId.filter(user => user._id !== idPlayer).map(present => present._id),           // CODE SANS CONDITIONS
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
-            // presentId : currentEvent.presentId
-            //     .filter(user => listPresents.some(player => player._id !== idPlayer))
-            //     .map(present => present._id),   
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+            presentId : currentEvent.presentId.filter(user => user._id !== idPlayer).map(present => present._id),          
             absentId : [...currentEvent.absentId.map(absent => absent._id), idPlayer]
         }
         console.log(data);
@@ -189,7 +123,6 @@ const MatchSheet = () => {
                     <article className='answer'>
                         <h2>Présent</h2>
                         <div className='gridAllPlayerList'>
-                            {/* {listPresents.map(present => <AllPlayerList key={present._id} {...present} />)} */}
                             {listPresents.map(present => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={present._id} {...present} />)}
                         </div>
                     </article>

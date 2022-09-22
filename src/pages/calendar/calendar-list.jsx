@@ -27,7 +27,7 @@ const CalendarList = () =>{
         else {
             axios.get(`http://localhost:8080/api/event`)
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 setListEvent(response.data);
             })
         }
@@ -40,7 +40,7 @@ const CalendarList = () =>{
                 {teamSelectedName === '' && <h2>Liste de toutes les activités du React Volley Club</h2>}
                 {teamSelectedName !== '' && <h2>Liste de toutes les activités de l'équipe : {teamSelectedName}</h2>}
                 
-                {(isConnected && (userRole === 'coach' || userRole === 'admin')) && 
+                {(isConnected && (userRole === 'coach' || userRole === 'admin') && teamSelectedName !== '') && 
                     <div>
                         <Link to='/eventToAdd'><button>Ajouter</button></Link>
                     </div>

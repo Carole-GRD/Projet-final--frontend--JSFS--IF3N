@@ -3,7 +3,7 @@ const UserTeam = ({name}) => {
     // console.log(id);
     return (
         <>
-            {name + ' '} 
+            <li className='userTeam'>{name}</li>
         </>
     )
 };

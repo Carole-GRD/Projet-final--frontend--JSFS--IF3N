@@ -33,7 +33,9 @@ const PlayerListItem = ({firstname, lastname, position, _id, deleteUser}) => {
             <article className='container'>
                 <div className='card'>
                     <h3>{firstname} {lastname}</h3>
-                    <p>Équipe(s) : {teams.map(player => <UserTeam key={player._id} {...player}/>)}</p>
+                    <ul>
+                        {teams.map(player => <UserTeam key={player._id} {...player}/>)}
+                    </ul>
                     <p>Position : {position}</p>
                 </div>
                 <div>

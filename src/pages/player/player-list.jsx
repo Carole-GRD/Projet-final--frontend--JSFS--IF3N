@@ -1,15 +1,14 @@
-
 import CoachListItem from "./coach-list-item";
 import PlayerListItem from "./player-list-item";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { resetTeam } from "../../store/actions/team-action";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 const PlayerList = () =>{
 
-    const { id } = useParams();
+    // const { id } = useParams();
     const [listPlayers, setListPlayers] = useState([]);
     const [listCoach, setListCoach] = useState([]);
     const teamSelectedId = useSelector(state => state.teams.teamSelectedId);
@@ -36,14 +35,13 @@ const PlayerList = () =>{
                 setListCoach(response.data);
             })
         } 
-    }, [teamSelectedId, resetTeam]);
+    }, [teamSelectedId]);
 
 
     const dispatch = useDispatch();
     const setAllMembers = () => {
         dispatch(resetTeam());
     }
-
 
     const onDeleteUser = (id) => {
         axios.delete(`http://localhost:8080/api/user/${id}`)

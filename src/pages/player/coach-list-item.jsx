@@ -34,7 +34,9 @@ const CoachListItem = ({firstname, lastname, _id, deleteUser}) => {
 
                 <div className='card'>
                     <h3>{firstname} {lastname}</h3>
-                    <p>Équipe(s) : {teams.map(coach => <UserTeam key={coach._id} {...coach} />)}</p>
+                    <ul>
+                        {teams.map(coach => <UserTeam key={coach._id} {...coach} />)}
+                    </ul>
                 </div>
 
                 <div>

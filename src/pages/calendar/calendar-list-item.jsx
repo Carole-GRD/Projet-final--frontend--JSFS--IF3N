@@ -1,8 +1,6 @@
 import axios from "axios";
-// import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-// import TeamName from "./match-sheet/team-name";
 
 
 const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, presentId, absentId, isPresent, isAbsent}) => {
@@ -10,18 +8,13 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
     const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
     const isConnected = useSelector(state => state.auth.isConnected);
     const userRole = useSelector(state => state.auth.userRole);
-    // const [teamList, setTeamList] = useState([]);
-
-    // récupérer l'id du joueur actuellement connecté dans le store
     const userId = useSelector(state => state.auth.userId);
 
-    // 2 fonctions present et absent
-    // l'idPlayer du joueur à ajouter sera dans le store (userId)
     // pas de setListPresent et setListAbsent car on est sur la page des événements et pas sur la feuille de match donc on ne doit pas modifier le rendu
-    // dans axios il faut construire les data
-    // les données au lieu d'être dans currentEvent seront directement dans mon composent (CalendarListItem)
+    // construire les 'data' pour la requête axios
+    // les données au lieu d'être dans currentEvent (voir fichier match-sheet) seront directement dans mon composent (CalendarListItem)
+
     const present = () => {
-        
         // console.log(userId);
         const data = {
             name,           
@@ -30,14 +23,12 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
             time,
             opposingTeam,
             presentId : [...presentId.map(present => present._id), userId],   
-            // presentId : [...currentEvent.presentId.map(player => player.filter(present => !present._id === idPlayer))],   
             absentId : absentId.filter(user => user._id !== userId).map(absent => absent._id)  
         }
         console.log(data);
         axios.put(`http://localhost:8080/api/event/${_id}`, data)
             .then(function (response) {
                 // console.log(response.date);
-                // setEventList(response.data);
                 isPresent();
             })
     }
@@ -59,21 +50,15 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
             })
     }
     
-    // useEffect(() => {
-    //     axios.get(`http://localhost:8080/api/team`)
-    //         .then((response) =>{
-    //             console.log(response);
-    //             setTeamList(response.data)
-    //         })
-    // }, [])
-    
     return (
         <>
             <article className='containerCalendar'>
                 <div className='cardCalendar'>
                     <div className='cardTextCalendar'>
-                        <h3>{name}</h3>
-                        <h4>{teamId.name}</h4>                     
+                        <h2>{name}</h2>
+                        {(teamSelectedName === ''  || (userRole === 'coach' || userRole === 'admin')) &&
+                            <h3>{teamId.name}</h3>                     
+                        }
                         <p>{opposingTeam !== '' && 'React VC - ' + opposingTeam}</p>
                         <p>{date}</p>
                         <p>{time}</p>
