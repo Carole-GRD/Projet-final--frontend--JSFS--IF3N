@@ -1,16 +1,66 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+// import TeamName from "./match-sheet/team-name";
 
 const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, presentId, absentId}) => {
-    // récupérer l'id du joueur actuellement connecté dans le store
-    // 2 fonctions present et absent
-    // l'idPlayer du joueur à ajouter sera dans le store (voir ligne 5)
+    
     const teamSelectedName = useSelector(state => state.teams.teamSelectedName);
     const isConnected = useSelector(state => state.auth.isConnected);
     const userRole = useSelector(state => state.auth.userRole);
-    // pas de setListPresent et setListAbsent
+    // const [eventList, setEventList] = useState([]);
+
+    // récupérer l'id du joueur actuellement connecté dans le store
+    const userId = useSelector(state => state.auth.userId);
+
+    // 2 fonctions present et absent
+    // l'idPlayer du joueur à ajouter sera dans le store (userId)
+    // pas de setListPresent et setListAbsent car on est sur la page des événements et pas sur la feuille de match donc on ne doit pas modifier le rendu
     // dans axios il faut construire les data
     // les données au lieu d'être dans currentEvent seront directement dans mon composent (CalendarListItem)
+    const present = (userId) => {
+        // console.log(userId);
+        const data = {
+            name,           
+            place,
+            date,
+            time,
+            opposingTeam,
+            presentId : [...presentId.map(present => present._id), userId],   
+            // presentId : [...currentEvent.presentId.map(player => player.filter(present => !present._id === idPlayer))],   
+            absentId : absentId.map(absent => absent._id)  
+        }
+        console.log(data);
+        axios.put(`http://localhost:8080/api/event/${_id}`, data)
+            .then(function (response) {
+                // console.log(response.date);
+                // setEventList(response.data);
+            })
+    }
+
+    const absent = (userId) => {
+        const data = {
+            name, 
+            place,
+            date,
+            time,
+            opposingTeam,
+            presentId : presentId.map(present => present._id),
+            absentId : [...absentId.map(absent => absent._id), userId]  
+        }
+        axios.put(`http://localhost:8080/api/event/${_id}`, data)
+            .then(function (response) {
+                // console.log(response.data);
+            })
+    }
+    
+    // useEffect(() => {
+    //     axios.get(`http://localhost:8080/api/team`)
+    //         .then((response) =>{
+    //             console.log(response);
+    //         })
+    // }, [])
     
     return (
         <>
@@ -18,7 +68,10 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                 <div className='cardCalendar'>
                     <div className='cardTextCalendar'>
                         <h3>{name}</h3>
-                        <h4>{(isConnected === false && teamSelectedName === '') && teamId.name}</h4>
+                        {/* {(isConnected === false && teamSelectedName === '') && 
+                            <h4>{eventList.map(<TeamName key={name._id} {...name} />)}</h4>
+                            <h4>teamId.name</h4> ????????
+                        } */}
                         <p>{opposingTeam !== '' && 'React VC - ' + opposingTeam}</p>
                         <p>{date}</p>
                         <p>{time}</p>
@@ -27,8 +80,8 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                     <div className='containerButton'>
                         {(isConnected && userRole === 'player') && 
                             <div className='buttonPlayer'>
-                                <button className='buttonPresent'>Présent</button>
-                                <button className='buttonAbsent'>Absent</button>
+                                <button onClick={present} className='buttonPresent'>Présent</button>
+                                <button onClick={absent} className='buttonAbsent'>Absent</button>
                             </div>
                         }
                         {(isConnected && teamSelectedName !== '') &&

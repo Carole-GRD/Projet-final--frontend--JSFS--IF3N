@@ -36,30 +36,26 @@ const MatchSheet = () => {
     const onIsPresent = (idPlayer) => {
         // console.log(idPlayer);   // → identifiant du joueur qui clique sur le bouton 'present'
 
-    ///////////////////    Remplacé par les conditions ci-dessous     ////////////////////////////////////
-        // // ++++++++++++++++++++++++++++++++   pas besoin dans la feuille de match  (match-sheet)
-        // // ↓ on retrouve le joueur qui clique sur le bouton 'present' dans la liste de tous les joueurs
-        // const userToAdd = listPlayers.find(player => player._id === idPlayer);  
-        // // ↓ on l'ajoute à la liste des joueurs présents
-        // setListPresents(current => [...current, userToAdd]);                      
-        // // ++++++++++++++++++++++++++++++
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        // ↓ on retrouve le joueur qui clique sur le bouton 'present' dans la liste de tous les joueurs
+        const userToAdd = listPlayers.find(player => player._id === idPlayer);  
+        // ↓ on l'ajoute à la liste des joueurs présents
+        setListPresents(current => [...current, userToAdd]);                      
         
+    //////////////////////////////////    Tests conditions     /////////////////////////////////////////////
+        // const playerAlreadyAnsweredAbsent = listAbsents.find(absent => absent._id === idPlayer)
 
-        const playerAlreadyAnsweredAbsent = listAbsents.find(absent => absent._id === idPlayer)
+        // if (!playerAlreadyAnsweredAbsent) {
+        //     const userToAdd = listPlayers.find(player => player._id === idPlayer); 
+        //     setListPresents(current => [...current, userToAdd]); 
+        //     console.log(userToAdd);
+        // }
+        // else {
+        //     setListAbsents(current => current.filter(player => player._id !== idPlayer))
+        //     setListPresents(current => [...current, playerAlreadyAnsweredAbsent]); 
+        //     console.log(playerAlreadyAnsweredAbsent);
+        // }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (!playerAlreadyAnsweredAbsent) {
-            const userToAdd = listPlayers.find(player => player._id === idPlayer); 
-            setListPresents(current => [...current, userToAdd]); 
-            console.log(userToAdd);
-        }
-        else {
-            setListAbsents(current => current.filter(player => player._id !== idPlayer))
-            setListPresents(current => [...current, playerAlreadyAnsweredAbsent]); 
-            console.log(playerAlreadyAnsweredAbsent);
-        }
-    
-    
         // mise à jour des données
         // on modifie les données de 'currentEvent' car on a cliqué sur un évènement en particulier (on est sur la feuille de match de cet évènement) !
         const data = {
@@ -75,8 +71,11 @@ const MatchSheet = () => {
             //  ↓ dans la feuille de match  (match-sheet) 
             // presentId : [...presentId.map(present => present._id), id du joueur connecté (store)]  
             
-            absentId : currentEvent.absentId          //  absentId : absentId
+            absentId : currentEvent.absentId.map(absent => absent._id)          //  absentId : absentId
+            // absentId : [...currentEvent.absentId.filter(absent => absent._id !== idPlayer)]       
+            // absentId : [...currentEvent.absentId.filter(absent => !listAbsents.some(absent._id === idPlayer)).map(absent => absent._id)]     
         }
+        console.log(idPlayer)
 
         // on lance la requête en lui passant les données à modifier
         axios.put(`http://localhost:8080/api/event/${id}`, data)
@@ -91,20 +90,23 @@ const MatchSheet = () => {
     const onIsAbsent = (idPlayer) => {
         // console.log(idPlayer);    // → identifiant du joueur qui clique sur le bouton 'absent'
 
-        const playerAlreadyAnsweredPresent = listPresents.find(present => present._id === idPlayer)
+     ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        // const playerAlreadyAnsweredPresent = listPresents.find(present => present._id === idPlayer)
 
-        if (!playerAlreadyAnsweredPresent) {
-            const userToAdd = listPlayers.find(player => player._id === idPlayer); 
-            setListAbsents(current => [...current, userToAdd]); 
-            console.log(userToAdd);
-        }
-        else {
-            setListPresents(current => current.filter(player => player._id !== idPlayer))
-            setListAbsents(current => [...current, playerAlreadyAnsweredPresent]); 
-            console.log(playerAlreadyAnsweredPresent);
-        }
-        // const userToAdd = listPlayers.find(player => player._id === idPlayer); 
-        // setListAbsents(current => [...current, userToAdd]); 
+        // if (!playerAlreadyAnsweredPresent) {
+        //     const userToAdd = listPlayers.find(player => player._id === idPlayer); 
+        //     setListAbsents(current => [...current, userToAdd]); 
+        //     console.log(userToAdd);
+        // }
+        // else {
+        //     setListPresents(current => current.filter(player => player._id !== idPlayer))
+        //     setListAbsents(current => [...current, playerAlreadyAnsweredPresent]); 
+        //     console.log(playerAlreadyAnsweredPresent);
+        // }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        const userToAdd = listPlayers.find(player => player._id === idPlayer); 
+        setListAbsents(current => [...current, userToAdd]); 
         // console.log(userToAdd);
         
         const data = {
@@ -113,7 +115,8 @@ const MatchSheet = () => {
             date : currentEvent.date,
             time : currentEvent.time,
             opposingTeam : currentEvent.opposingTeam,
-            presentId : currentEvent.presentId,   
+            presentId : currentEvent.presentId.map(present => present._id),   
+            // presentId : [...currentEvent.presentId.map(player => player.filter(present => !present._id === idPlayer))],   
             absentId : [...currentEvent.absentId.map(absent => absent._id), idPlayer]
         }
         console.log(data);
@@ -133,8 +136,11 @@ const MatchSheet = () => {
                 <h3>{currentEvent.name}</h3>
                 <p>Date : {currentEvent.date}</p>
                 <p>Heure : {currentEvent.time}</p>
-                <p>Lieu : {currentEvent.place}</p>
-
+                {currentEvent.place ?
+                    <p>Lieu : {currentEvent.place}</p>
+                    : <p>Lieu : Centre Sportif de MERN</p>
+                }
+                
                 <div className='containerButton'>
                     <Link to='/calendar'><button className='button'>Retourner au calendrier</button></Link>
                 </div>
