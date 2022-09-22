@@ -23,16 +23,27 @@ const MatchSheet = () => {
                 // console.log(response.data);
                 setListPlayers(response.data.userId);
             })  
-        axios.get(`http://localhost:8080/api/event/${id}`)
-            .then(function (response) {
-                // console.log(response.data);
-                setListPresents(response.data.presentId);
-                setListAbsents(response.data.absentId);
-                setCurrentEvent(response.data);
-            })  
+        setupEvent();
+        // axios.get(`http://localhost:8080/api/event/${id}`)
+        //     .then(function (response) {
+        //         // console.log(response.data);
+        //         setListPresents(response.data.presentId);
+        //         setListAbsents(response.data.absentId);
+        //         setCurrentEvent(response.data);
+        //     })  
     }, [teamSelectedId, id]);
     
-    
+    // currentEvent est l'état de la page au chargement, il faut donc la mettre à jour à chaque modification du present absent
+    const setupEvent = () => {
+        console.log('setup');
+        axios.get(`http://localhost:8080/api/event/${id}`)
+        .then(function (response) {
+            // console.log(response.data);
+            setListPresents(response.data.presentId);
+            setListAbsents(response.data.absentId);
+            setCurrentEvent(response.data);
+        })
+    }
     const onIsPresent = (idPlayer) => {
         // console.log(idPlayer);   // → identifiant du joueur qui clique sur le bouton 'present'
 
@@ -46,18 +57,18 @@ const MatchSheet = () => {
          ///////////////////////////////////////////////////////////////////////////////////////////////////////
         
         //////////////////////////////////    Tests conditions     /////////////////////////////////////////////
-        const playerAlreadyAnsweredAbsent = listAbsents.find(absent => absent._id === idPlayer)
+        // const playerAlreadyAnsweredAbsent = listAbsents.find(absent => absent._id === idPlayer)
 
-        if (!playerAlreadyAnsweredAbsent) {
-            const userToAdd = listPlayers.find(player => player._id === idPlayer); 
-            setListPresents(current => [...current, userToAdd]); 
-            console.log(userToAdd);
-        }
-        else {
-            setListAbsents(current => current.filter(player => player._id !== idPlayer))
-            setListPresents(current => [...current, playerAlreadyAnsweredAbsent]); 
-            console.log(playerAlreadyAnsweredAbsent);
-        }
+        // if (!playerAlreadyAnsweredAbsent) {
+        //     const userToAdd = listPlayers.find(player => player._id === idPlayer); 
+        //     setListPresents(current => [...current, userToAdd]); 
+        //     console.log(userToAdd);
+        // }
+        // else {
+        //     setListAbsents(current => current.filter(player => player._id !== idPlayer))
+        //     setListPresents(current => [...current, playerAlreadyAnsweredAbsent]); 
+        //     console.log(playerAlreadyAnsweredAbsent);
+        // }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // mise à jour des données
@@ -77,17 +88,18 @@ const MatchSheet = () => {
             // presentId : [...presentId.map(present => present._id), id du joueur connecté (store)]  
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////     
-            // absentId : currentEvent.absentId.map(absent => absent._id)             // CODE SANS CONDITIONS
+            absentId : currentEvent.absentId.filter(user => user._id !== idPlayer).map(absent => absent._id)             // CODE SANS CONDITIONS
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-            absentId : currentEvent.absentId
-                .filter(user => listAbsents.some(player => player._id !== idPlayer))
-                .map(absent => absent._id)     
+            // absentId : currentEvent.absentId
+            //     .filter(user => listAbsents.some(player => player._id !== idPlayer))
+            //     .map(absent => absent._id)     
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
         }
         // on lance la requête en lui passant les données à modifier
         axios.put(`http://localhost:8080/api/event/${id}`, data)
             .then(function (response) {
                 console.log(response.data);
+                setupEvent();
             })
     }
 
@@ -98,18 +110,18 @@ const MatchSheet = () => {
         // console.log(idPlayer);    // → identifiant du joueur qui clique sur le bouton 'absent'
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        const playerAlreadyAnsweredPresent = listPresents.find(present => present._id === idPlayer)
+        // const playerAlreadyAnsweredPresent = listPresents.find(present => present._id === idPlayer)
 
-        if (!playerAlreadyAnsweredPresent) {
-            const userToAdd = listPlayers.find(player => player._id === idPlayer); 
-            setListAbsents(current => [...current, userToAdd]); 
-            console.log(userToAdd);
-        }
-        else {
-            setListPresents(current => current.filter(player => player._id !== idPlayer))
-            setListAbsents(current => [...current, playerAlreadyAnsweredPresent]); 
-            console.log(playerAlreadyAnsweredPresent);
-        }
+        // if (!playerAlreadyAnsweredPresent) {
+        //     const userToAdd = listPlayers.find(player => player._id === idPlayer); 
+        //     setListAbsents(current => [...current, userToAdd]); 
+        //     console.log(userToAdd);
+        // }
+        // else {
+        //     setListPresents(current => current.filter(player => player._id !== idPlayer))
+        //     setListAbsents(current => [...current, playerAlreadyAnsweredPresent]); 
+        //     console.log(playerAlreadyAnsweredPresent);
+        // }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
         // const userToAdd = listPlayers.find(player => player._id === idPlayer);        // CODE SANS CONDITIONS
@@ -124,11 +136,11 @@ const MatchSheet = () => {
             time : currentEvent.time,
             opposingTeam : currentEvent.opposingTeam,
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-            // presentId : currentEvent.presentId.map(present => present._id),           // CODE SANS CONDITIONS
+            presentId : currentEvent.presentId.filter(user => user._id !== idPlayer).map(present => present._id),           // CODE SANS CONDITIONS
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-            presentId : currentEvent.presentId
-                .filter(user => listPresents.some(player => player._id !== idPlayer))
-                .map(present => present._id),   
+            // presentId : currentEvent.presentId
+            //     .filter(user => listPresents.some(player => player._id !== idPlayer))
+            //     .map(present => present._id),   
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
             absentId : [...currentEvent.absentId.map(absent => absent._id), idPlayer]
         }
@@ -137,6 +149,7 @@ const MatchSheet = () => {
         axios.put(`http://localhost:8080/api/event/${id}`, data)
             .then(function (response) {
                 console.log(response.data);
+                setupEvent();
             })
             .catch()
     }

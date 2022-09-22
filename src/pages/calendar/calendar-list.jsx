@@ -13,6 +13,10 @@ const CalendarList = () =>{
     const userRole = useSelector(state => state.auth.userRole);
 
     useEffect(() => {
+        setupEvents();
+    }, [teamSelectedId]);
+
+    const setupEvents = () => {
         if (teamSelectedId !== '') {
             axios.get(`http://localhost:8080/api/event/team/${teamSelectedId}`)
                 .then((response) => {
@@ -23,11 +27,11 @@ const CalendarList = () =>{
         else {
             axios.get(`http://localhost:8080/api/event`)
             .then((response) => {
-                // console.log(response.data);
+                console.log(response.data);
                 setListEvent(response.data);
             })
-        } 
-    }, [teamSelectedId]);
+        }
+    }
 
     return (
         <>
@@ -43,7 +47,7 @@ const CalendarList = () =>{
                 }
 
                 <div className='gridCalendar'>
-                    {listEvent.map(event => <CalendarListItem key={event._id} {...event}/>)}
+                    {listEvent.map(event => <CalendarListItem  isPresent={setupEvents} isAbsent={setupEvents} key={event._id} {...event}/>)}
                 </div>
             </main>
         </>
