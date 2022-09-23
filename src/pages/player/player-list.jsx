@@ -19,7 +19,9 @@ const PlayerList = () =>{
             axios.get(`http://localhost:8080/api/team/${teamSelectedId}`)
                 .then((response) => {
                     // console.log(response);
+                    // ↓ les joueurs récupérés, d'une équipe en particulier, sont déjà sous forme de tableau (voir 'userId' dans insomnia)
                     setListPlayers(response.data.userId);
+                    // ↓ le coach récupéré, d'une équipe en particulier, est sous forme d'un objet, il faut créer un tableau pour pouvoir 'mapper'  (voir 'coach' dans insomnia) - on doit 'mapper' car s'il n'y a pas d'équipe séctionnée par l'utilisateur, on récupère tous les coachs (voir condition ci-dessous)
                     setListCoach([response.data.coach])
                 })
         }

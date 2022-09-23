@@ -49,12 +49,21 @@
                     border: 2px solid $color-3;
                     color: $color-3;
                     background-color: $color-71;
+                    
+                }
+                .buttonPresent.present {
+                    color: $color-71;
+                    background-color: $color-3; 
                 }
                 .buttonAbsent {
                     // background-color: $color-4;
                     border: 2px solid $color-6;
                     color: $color-6;
                     background-color: $color-71;
+                }
+                .buttonAbsent.absent {
+                    color: $color-71;
+                    background-color: $color-6; 
                 }
             }
             .matchSheet {
@@ -64,10 +73,10 @@
                 padding: 10px 30px;
                 // background-color: $color-2;
                 // color: $color-71;
-                border: 2px solid $color-6;
-                color: $color-6;
+                border: 2px solid $color-1;
+                color: $color-1;
                 background-color: $color-71;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-family: V7rdana, Geneva, Tahoma, sans-serif;
                 font-size: 1.1rem;
                 font-weight: 500;
                 border-radius: 5px;

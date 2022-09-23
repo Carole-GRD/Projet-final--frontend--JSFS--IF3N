@@ -1,3 +1,4 @@
+import { bgcolor } from "@mui/system";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
@@ -74,16 +75,35 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                             <div className='buttonPlayer'>
                                 {/* Si le joueur n'est pas dans la liste des absents, ni dans la liste des présents; c'est-à-dire qu'il n'a pas encore répondu */}
                                 {/* ou si le joueur est dans la liste des absents, alors le bouton 'present' s'affiche pour qu'il puisse changer d'avis */}
+                        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
+                                {/* {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
+                                    || absentId.some(user => user._id === userId) ) &&
+                                        <button onClick={present} className='buttonPresent'>Présent</button>
+                                } */}
+                        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
                                 {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
                                     || absentId.some(user => user._id === userId) ) &&
                                         <button onClick={present} className='buttonPresent'>Présent</button>
                                 }
+                                {(presentId.some(user => user._id === userId) ) &&
+                                        <button onClick={present} className='buttonPresent present'>Présent</button>
+                                }
+                        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
                                 {/* Si le joueur n'est pas dans la liste des absents, ni dans la liste des présents; c'est-à-dire qu'il n'a pas encore répondu */}
-                                {/* ou si le joueur est dans la liste des présents, alors le bouton 'present' s'affiche pour qu'il puisse changer d'avis */}
-                                {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
+                                {/* ou si le joueur est dans la liste des présents, alors le bouton 'absent' s'affiche pour qu'il puisse changer d'avis */}
+                                {/* {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
                                     || presentId.some(user => user._id === userId) ) &&
                                     <button onClick={absent} className='buttonAbsent'>Absent</button>
+                                } */}
+                        {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
+                                {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
+                                    || presentId.some(user => user._id === userId) ) &&
+                                        <button onClick={absent} className='buttonAbsent'>Absent</button>
                                 }
+                                {(absentId.some(user => user._id === userId) ) &&
+                                        <button onClick={absent} className='buttonAbsent absent'>Absent</button>
+                                }
+
                             </div>
                         }
 
