@@ -38,17 +38,26 @@ body {
     box-sizing: border-box;
     background-color: #04d9c429;
     background-image: linear-gradient(to bottom right, #b6e3ffe5, #b6e3ffe5), url('../assets/img/filet_ciel.jpg');
+    
     main {
         margin-top: 15vh;
-        margin-left: 200px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        .pageContainer {
+            // margin-left: 5vw;
+            // margin-right: 20vw;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        
         
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1em;
             padding: 1em;
+            width: 70vw;
         }
+        }
+        
     }
     
 }
@@ -61,6 +70,7 @@ body {
     border: none;
     border-radius: 5px;
     background-color: $color-7;
+    
     cursor: pointer;
     .card {
         display: inline-block;
@@ -86,4 +96,64 @@ body {
     background-color: $color-1;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 50vw;
+    background-color: #ffffff50;
+    border-radius: 20px;
+    margin: 0;
+    color: $color-5;
+    font-size: 1.5rem;
+    label {
+        margin: 5%;
+    }
+    input {
+        width: 90%;
+        color: $color-1;
+        background-color: $color-12;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid $color-1;
+        font-size: 1.3rem;
+        margin: 5%;
+        // padding: 5px;
+        // margin-bottom: 15px;
+        
+    }
+    ::placeholder {
+        color: $color-1;
+        opacity: .3;
+    }
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        // font-size: 1.5rem;
+
+        
+        button {
+            border: none;
+            // padding: 5px 10px;
+            width: 50%;
+            height: 40px;
+            background-color: $color-1;
+            color: $color-71;
+            font-size: 1.5rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            // padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+        :hover {
+            background-color: $color-3;
+            color: $color-5;
+            // font-size: 1.5rem;
+        }
+    }
 }

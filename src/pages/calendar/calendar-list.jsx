@@ -47,18 +47,20 @@ const CalendarList = () =>{
     return (
         <>
             <main>
-                <h1>Calendrier</h1>
-                {teamSelectedName === '' && <h2>Liste de toutes les activités du React Volley Club</h2>}
-                {teamSelectedName !== '' && <h2>Liste de toutes les activités de l'équipe : {teamSelectedName}</h2>}
-                
-                {((userRole === 'coach' && teamSelectedName !== '') || userRole === 'admin') && 
-                    <div>
-                        <Link to='/eventToAdd'><button>Ajouter</button></Link>
-                    </div>
-                }
+                <div className='pageContainer'>
+                    <h1>Calendrier</h1>
+                    {teamSelectedName === '' && <h2>Liste de toutes les activités du React Volley Club</h2>}
+                    {teamSelectedName !== '' && <h2>Liste de toutes les activités de l'équipe : {teamSelectedName}</h2>}
+                    
+                    {((userRole === 'coach' && teamSelectedName !== '') || userRole === 'admin') && 
+                        <div>
+                            <Link to='/eventToAdd'><button>Ajouter</button></Link>
+                        </div>
+                    }
 
-                <div className='gridCalendar'>
-                    {listEvent.map(event => <CalendarListItem isPresent={setupEvents} isAbsent={setupEvents} deleteEvent={onDeleteEvent} key={event._id} {...event}/>)}
+                    <div className='gridCalendar'>
+                        {listEvent.map(event => <CalendarListItem isPresent={setupEvents} isAbsent={setupEvents} deleteEvent={onDeleteEvent} key={event._id} {...event}/>)}
+                    </div>
                 </div>
             </main>
         </>

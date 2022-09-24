@@ -66,24 +66,26 @@ const PlayerList = () =>{
     return (
         <>
             <main>
-                {teamSelectedName === '' ? <h1>Liste de tous les membres du React Volley Club</h1> : null}
-                {teamSelectedName !== '' && <h1>Liste de tous les membres de l'équipe : {teamSelectedName}</h1>}
-                
-                <div className='containerButton'>
-                    {teamSelectedName !== '' &&
-                        <button onClick={setAllMembers} className='button'>Voir tous les membres</button>
-                    }
-                </div>
+                <div className='pageContainer'>
+                    {teamSelectedName === '' ? <h1>Liste de tous les membres du React Volley Club</h1> : null}
+                    {teamSelectedName !== '' && <h1>Liste de tous les membres de l'équipe : {teamSelectedName}</h1>}
+                    
+                    <div className='containerButton'>
+                        {teamSelectedName !== '' &&
+                            <button onClick={setAllMembers} className='button'>Voir tous les membres</button>
+                        }
+                    </div>
 
-                {teamSelectedName === '' && <h2>Coachs</h2>}
-                {teamSelectedName !== '' && <h2>Coach</h2>}
-                <div className='grid'>
-                    {listCoach.map(coach => <CoachListItem deleteUser={onDeleteUser} key={coach._id} {...coach}/>)}
-                </div>
+                    {teamSelectedName === '' && <h2>Coachs</h2>}
+                    {teamSelectedName !== '' && <h2>Coach</h2>}
+                    <div className='grid'>
+                        {listCoach.map(coach => <CoachListItem deleteUser={onDeleteUser} key={coach._id} {...coach}/>)}
+                    </div>
 
-                <h2>Joueurs</h2>
-                <div className='grid'>
-                    {listPlayers.map(user => <PlayerListItem deleteUser={onDeleteUser} key={user._id} {...user}/>)}
+                    <h2>Joueurs</h2>
+                    <div className='grid'>
+                        {listPlayers.map(user => <PlayerListItem deleteUser={onDeleteUser} key={user._id} {...user}/>)}
+                    </div>
                 </div>
             </main>
             

@@ -15,11 +15,11 @@
 - Redux Toolkit : Outils pour mettre en place Redux
 - React-Redux : Bibliothèque pour lier React et Redux
 
-<!-- ### Formulaire
-- React hook form : Gestion de formulaire en React -->
+### Formulaire
+- React hook form : Gestion de formulaire en React
 
 ### Divers
 <!-- - prop-types : Vérifier les données des props -->
-- axios : Réaliser les requetes AJAX (Consomation de l'API)
+- axios : Réaliser les requetes AJAX (Consommation de l'API)
 <!-- - clsx : Création de « ClassName » dynamique -->
 <!-- - nanoid : Générateur d'identifiant -->

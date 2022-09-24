@@ -46,24 +46,24 @@ const TeamList = () => {
     return (
         <>
             <main>
-                
+                <div className='pageContainer'>
 
-                {(userRole === 'admin' || isConnected === false) ? 
-                    <h1>Toutes les équipes</h1> : <h1>Mes équipes</h1>
-                }
+                    {(userRole === 'admin' || isConnected === false) ? 
+                        <h1>Toutes les équipes</h1> : <h1>Mes équipes</h1>
+                    }
 
-    {/* Si l'utilisateur connecté est 'admin' alors il a accès aux différents boutons lui permettant d'ajouter, modifier ou supprimer une équipe */}
-                {(isConnected === true && userRole === 'admin') ?
-                    <Link to='/teamToAdd'><button className='buttonAdmin'>Ajouter une équipe</button></Link>
-                    : null
-                }
-    {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}            
+        {/* Si l'utilisateur connecté est 'admin' alors il a accès aux différents boutons lui permettant d'ajouter, modifier ou supprimer une équipe */}
+                    {(isConnected === true && userRole === 'admin') ?
+                        <Link to='/teamToAdd'><button className='buttonAdmin'>Ajouter une équipe</button></Link>
+                        : null
+                    }
+        {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}            
 
-                {<div className='grid'>
-                    {teams.map(team => <TeamListItem deleteTeam={onDeleteTeam} key={team._id} {...team}/>)}
-                </div>}
+                    {<div className='grid'>
+                        {teams.map(team => <TeamListItem deleteTeam={onDeleteTeam} key={team._id} {...team}/>)}
+                    </div>}
+                </div>
             </main>
-            
         </>
     );
 };
