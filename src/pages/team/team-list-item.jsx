@@ -26,7 +26,7 @@ const TeamListItem = ({_id, coach, name, deleteTeam }) => {
     
     return (
         <>
-            <article className='container'>
+            <article className='containerTeam'>
                 <div className='card'>
                     <div role='button' onClick={handleSelectedTeam}>
                         <h3>{name}</h3>
@@ -35,7 +35,7 @@ const TeamListItem = ({_id, coach, name, deleteTeam }) => {
                     </div>
                     <div>
                         {userRole === 'admin' && (
-                            <div>
+                            <div className='spaceButtonTeam'>
                                 <Link to={`/teamToUpdate/${_id}`}><button className='buttonAdmin'>Modifier</button></Link>
                                 <button onClick={onDelete} className='buttonAdmin'>Supprimer</button>
                             </div>

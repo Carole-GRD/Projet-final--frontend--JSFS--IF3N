@@ -43,28 +43,40 @@ const TeamToAdd = () => {
     return (
         <>
             <main>
-                <h1>Ajouter une équipe</h1>
+                <div>
+                    <div className='teamTitleAndButton'>
+                        <h1>Ajouter une équipe</h1>
+                        <Link to='/team'><button className='buttonAdmin'>Retourner à la liste des équipes</button></Link>
+                    </div>
+                    <article className='formTeamToAdd'>
+                        <form onSubmit={handleSubmit(onRegisterTeam)}>
+                            <div>
+                                <label for='name'>Équipe</label>
+                                <input id="name" type="text" placeholder="Nom de l'équipe" {...register('name')} />
+                            </div>
 
-                <form onSubmit={handleSubmit(onRegisterTeam)}>
-                    <input id="name" type="text" placeholder="Nom de l'équipe" {...register('name')} />
+                            <div>
+                                <label for='coach'>Coach</label>    
+                                <select id="coach" {...register('coach')}>
+                                    {coachList.map(coach => <option key={coach._id} value={coach._id}>{coach.firstname} {coach.lastname}</option>)}
+                                </select>
+                            </div>
 
-                    <select id="coach" {...register('coach')}>
-                        {coachList.map(coach => <option key={coach._id} value={coach._id}>{coach.firstname} {coach.lastname}</option>)}
-                    </select>
+                            {/* <select id="userId" {...register('userId')}>
+                                {playerList.map(player => <option key={player._id} value={player._id}>{player.firstname} {player.lastname}</option>)}
+                            </select> */}
 
-                    {/* <select id="userId" {...register('userId')}>
-                        {playerList.map(player => <option key={player._id} value={player._id}>{player.firstname} {player.lastname}</option>)}
-                    </select> */}
+                            <div className='buttonContainer'>
+                                <button type='submit'>Ajouter</button>
+                            </div>
 
-                    <button type='submit'>Ajouter</button>
-
-                    {/* {errorMsg && (
-                        <p>{errorMsg}</p>
-                        )} */}
-                </form>
-
-                <Link to='/team'><button>Retourner à la liste des équipes</button></Link>
-
+                            {/* {errorMsg && (
+                                <p>{errorMsg}</p>
+                                )} */}
+                        </form>
+                    </article>
+                    
+                </div>
             </main>
         </>
     );

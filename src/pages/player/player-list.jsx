@@ -66,7 +66,7 @@ const PlayerList = () =>{
     return (
         <>
             <main>
-                <div className='pageContainer'>
+                <div className='pageContainerPlayer'>
                     {teamSelectedName === '' ? <h1>Liste de tous les membres du React Volley Club</h1> : null}
                     {teamSelectedName !== '' && <h1>Liste de tous les membres de l'équipe : {teamSelectedName}</h1>}
                     
@@ -82,7 +82,7 @@ const PlayerList = () =>{
                         {listCoach.map(coach => <CoachListItem deleteUser={onDeleteUser} key={coach._id} {...coach}/>)}
                     </div>
 
-                    <h2>Joueurs</h2>
+                    <h2 className='playerTitle'>Joueurs</h2>
                     <div className='grid'>
                         {listPlayers.map(user => <PlayerListItem deleteUser={onDeleteUser} key={user._id} {...user}/>)}
                     </div>

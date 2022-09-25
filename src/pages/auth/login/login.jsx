@@ -30,29 +30,28 @@ const Login = () => {
     return (
         <>
             <main>
-            <div className='pageContainer'>
-            
-                <h1>Se connecter</h1>
-                    {/* <section className='formContainer'> */}
-                        <articel className='form'>
-                            <form onSubmit={handleSubmit(onLogin)}>
-                                <div>
-                                    <label for="credential">Pseudo ou email</label>
-                                    <input id='credential' type='text' placeholder='Pseudo ou email' {...register('credential')} />
-                                </div>
-                                <div>
-                                    <label for="credpasswordential">Mot de passe</label>
-                                    <input id='password' type='text' placeholder='Mot de passe' {...register('password')} />
-                                </div>
-                                <div className='buttonContainer'>
-                                    <button type='submit'>Connexion</button>
-                                </div>
-                                {errorMsg && (
-                                    <p>{errorMsg}</p>
-                                )}
-                            </form>
-                        </articel>
-                    {/* </section> */}
+                <div>
+                    <h1>Se connecter</h1>
+
+                    <article className='formLogin'>
+                        <form onSubmit={handleSubmit(onLogin)}>
+                            <div>
+                                <label for="credential">Pseudo ou email</label>
+                                <input id='credential' type='text' placeholder='Pseudo ou email' {...register('credential')} />
+                            </div>
+                            <div>
+                                <label for="credpasswordential">Mot de passe</label>
+                                <input id='password' type='text' placeholder='Mot de passe' {...register('password')} />
+                            </div>
+                            <div className='buttonContainer'>
+                                <button type='submit'>Connexion</button>
+                            </div>
+                            {errorMsg && (
+                                <p>{errorMsg}</p>
+                            )}
+                        </form>
+                    </article>
+
                 </div>
             </main>
         </>

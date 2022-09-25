@@ -47,32 +47,65 @@ const EventToAdd = () => {
     return (
         <>
             <main>
-                <h1>Ajouter un évènement</h1>
+                <div>
+                    <div className='eventTitleAndButton'>
+                        <h1>Ajouter un évènement</h1>
+                        <Link to='/calendar'><button className='buttonAdmin'>Retourner au calendrier</button></Link>
+                    </div>
 
-                <form onSubmit={handleSubmit(onRegisterEvent)}>
-                    
-                    <select id='teamId' {...register('teamId')}>
-                        {teamList.map(team => <option key={team._id} value={team._id}>{team.name}</option>)}
-                    </select>
-                    
-                    <select id='coach' {...register('coach')}>
-                        {coachList.map(coach => <option key={coach._id} value={coach._id}>{coach.firstname} {coach.lastname}</option>)}
-                    </select>
-                    
-                    <select {...register('name')}>
-                        <option value='Entrainement'>Entrainement</option>
-                        <option value='Match'>Match</option>
-                        <option value='Tournoi'>Tournoi</option>
-                    </select>
+                    <article className='formEventToAdd'>
+                        <form onSubmit={handleSubmit(onRegisterEvent)}>
+                            
+                            <div>
+                                <label for='teamId'>Équipe</label>
+                                <select id='teamId' {...register('teamId')}>
+                                    {teamList.map(team => <option key={team._id} value={team._id}>{team.name}</option>)}
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for='coach'>Coach</label>
+                                <select id='coach' {...register('coach')}>
+                                    {coachList.map(coach => <option key={coach._id} value={coach._id}>{coach.firstname} {coach.lastname}</option>)}
+                                </select>
+                            </div>
 
-                    <input id='place' type='text' placeholder='Lieu' {...register('place')} />
-                    <input id='date' type='text' placeholder='JJ/MM/AAAA' {...register('date')} />
-                    <input id='time' type='text' placeholder='Heure (00h00)' {...register('time')} />
-                    <input id='opposingTeam' type='text' placeholder='Équipe adverse' {...register('opposingTeam')} />
-                    <button type='submit'>Ajouter</button>
-                </form>
+                            <div>
+                                <label for='name'>Évènement</label>
+                                <select id='name' {...register('name')}>
+                                    <option value='Entrainement'>Entrainement</option>
+                                    <option value='Match'>Match</option>
+                                    <option value='Tournoi'>Tournoi</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for='place'>Lieu</label>
+                                <input id='place' type='text' placeholder='Lieu' {...register('place')} />
+                            </div>
 
-                <Link to='/calendar'><button>Retourner au calendrier</button></Link>
+                            <div>
+                                <label for='date'>Date</label>
+                                <input id='date' type='text' placeholder='JJ/MM/AAAA' {...register('date')} />
+                            </div>
+
+                            <div>
+                                <label for='time'>Heure</label>
+                                <input id='time' type='text' placeholder='Heure (00h00)' {...register('time')} />
+                            </div>
+
+                            <div>
+                                <label for='opposingTeam'>Équipe adverse</label>
+                                <input id='opposingTeam' type='text' placeholder='Équipe adverse' {...register('opposingTeam')} />
+                            </div>
+
+                            <div className='buttonContainer'>
+                                <button type='submit'>Ajouter</button>
+                            </div>
+                        </form>
+                    </article>
+
+                </div>
             </main>
         </>
     )

@@ -1,3 +1,24 @@
+
+
+.pageContainerPlayer {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 70%;
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2em;
+        padding: 1em;
+        // width: 70%;
+    }
+    .playerTitle {
+        margin-top: 8vh;
+    }
+}
+
+
+
+
+
 .containerButton {
     display: flex;
     // align-items: flex-end;
@@ -20,6 +41,4 @@
     }
 }
 
-.userTeam {
-    list-style: none;
-}
+

@@ -1,0 +1,12 @@
+.pageContainerTeam {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 70%;
+    .gridContainer {
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2em;
+            padding: 1em;
+        }
+    }
+}

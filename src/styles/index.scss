@@ -1,7 +1,16 @@
 @import "./settings";
 @import "./header";
 @import "./home";
-@import "./player";
-@import "./calendar";
+@import "./player-list";
+@import './player-list-item';
+@import "./calendar-list";
+@import "./calendar-list-item";
 @import "./matchsheet";
+@import "./login";
+@import "./register";
+@import "./team-list";
+@import "./team-list-item";
+@import "./event-to-add";
+@import "./team-to-add";
+@import "./team-to-update";
 

@@ -46,7 +46,7 @@ const TeamList = () => {
     return (
         <>
             <main>
-                <div className='pageContainer'>
+                <div className='pageContainerTeam'>
 
                     {(userRole === 'admin' || isConnected === false) ? 
                         <h1>Toutes les équipes</h1> : <h1>Mes équipes</h1>
@@ -59,8 +59,10 @@ const TeamList = () => {
                     }
         {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}            
 
-                    {<div className='grid'>
-                        {teams.map(team => <TeamListItem deleteTeam={onDeleteTeam} key={team._id} {...team}/>)}
+                    {<div className='gridContainer'>
+                        <div  className='grid'>
+                            {teams.map(team => <TeamListItem deleteTeam={onDeleteTeam} key={team._id} {...team}/>)}
+                        </div>
                     </div>}
                 </div>
             </main>

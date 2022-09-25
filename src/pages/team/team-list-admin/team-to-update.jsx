@@ -58,38 +58,52 @@ const TeamToUpdate = () => {
     return (
         <>
             <main>
+                <div>
+                    <div className='teamTitleAndButton'>
+                        <h1>Modifier une équipe</h1>
+                        <Link to='/team'><button className='buttonAdmin'>Retourner à la liste des équipes</button></Link>
+                    </div>
 
-                <p>Modifier une équipe</p>
+                    <article className='formTeamToUpdate'>
+                        <form onSubmit={handleSubmit(onTeamUpdated)}>
+                            <div>
+                                <label for='name'>Équipe</label>
+                                <input id='name' type='text' placeholder='Équipe' {...register('name')} />
+                            </div>
 
-                <form onSubmit={handleSubmit(onTeamUpdated)}>
-                    <input id='name' type='text' placeholder='Équipe' {...register('name')} />
-                    <select id='coach' {...register('coach')}>
-                        {userList
-                            .filter(user => user.role === 'coach')
-                            .map(coach => <option key={coach._id} value={coach._id}>{coach.firstname} {coach.lastname}</option>
+                            <div>
+                                <label for='coach'>Coach</label>
+                                <select id='coach' {...register('coach')}>
+                                    {userList
+                                        .filter(user => user.role === 'coach')
+                                        .map(coach => <option key={coach._id} value={coach._id}>{coach.firstname} {coach.lastname}</option>
+                                    )}
+                                </select>
+                            </div>
+
+                            <div className='buttonContainer'>
+                                <button type='submit'>Modifier</button>
+                            </div>
+                        </form>
+
+                        {listPlayer.map(player => 
+                                <div>
+                                    <div>{player.firstname} {player.lastname}</div>
+                                    <button onClick={() => {onPlayerDelete(player._id)}}>Supprimer</button>
+                                </div>    
                         )}
-                    </select>
-                    <button type='submit'>Modifier</button>
-                </form>
 
-                {listPlayer.map(player => 
-                        <div>
-                            <div>{player.firstname} {player.lastname}</div>
-                            <button onClick={() => {onPlayerDelete(player._id)}}>Supprimer</button>
-                        </div>    
-                )}
+                        <select id='player'>
+                            {userList
+                                .filter(user => user.role === 'player')
+                                .filter(user => !listPlayer.some(player => player._id === user._id))
+                                .map(player => <option key={player._id} value={player._id}>{player.firstname} {player.lastname}</option>
+                            )}
+                        </select>
+                        <button onClick={onPlayerAdd}>Ajouter</button>
 
-                <select id='player'>
-                    {userList
-                        .filter(user => user.role === 'player')
-                        .filter(user => !listPlayer.some(player => player._id === user._id))
-                        .map(player => <option key={player._id} value={player._id}>{player.firstname} {player.lastname}</option>
-                    )}
-                </select>
-                <button onClick={onPlayerAdd}>Ajouter</button>
-
-                <Link to='/team'><button>Retourner à la liste des équipes</button></Link>
-
+                    </article>
+                </div>
             </main>
         </>
     )

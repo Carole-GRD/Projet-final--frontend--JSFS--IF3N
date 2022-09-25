@@ -30,18 +30,18 @@ const CoachListItem = ({firstname, lastname, _id, deleteUser}) => {
     
     return (
         <>  
-            <article className='container'>  
+            <article className='containerPlayerAndCoach'>  
 
-                <div className='card'>
+                <div className='card coach'>
                     <h3>{firstname} {lastname}</h3>
-                    <ul>
+                    <div>
                         {teams.map(coach => <UserTeam key={coach._id} {...coach} />)}
-                    </ul>
+                    </div>
                 </div>
 
-                <div>
+                <div className='buttonContainer'>
                     {userRole === 'admin' && (
-                        <div>
+                        <div className='spaceButton'>
                             <Link to={`/userToUpdate/${_id}`}><button className='buttonAdmin'>Modifier</button></Link>
                             <button onClick={onDelete} className='buttonAdmin'>Supprimer</button>
                         </div>

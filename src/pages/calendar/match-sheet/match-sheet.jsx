@@ -50,9 +50,7 @@ const MatchSheet = () => {
             opposingTeam : currentEvent.opposingTeam,
             // dans toutes les données de l'évènement, on ne renvoie que l'identifiant des joueurs présents
             // puis on ajoute l'identifiant du nouveau joueur présent
-            presentId : [...currentEvent.presentId.map(present => present._id), idPlayer], 
-            //  ↓ dans la feuille de match  (match-sheet) 
-            // presentId : [...presentId.map(present => present._id), id du joueur connecté (store)]  
+            presentId : [...currentEvent.presentId.map(present => present._id), idPlayer],   
             absentId : currentEvent.absentId.filter(user => user._id !== idPlayer).map(absent => absent._id)             
         }
         // on lance la requête en lui passant les données à modifier
@@ -91,51 +89,54 @@ const MatchSheet = () => {
     return (
         <>
             <main>
-                <h1>Feuille de match - {teamSelectedName}</h1>
-
-                <h3>{currentEvent.name}</h3>
-                <p>Date : {currentEvent.date}</p>
-                <p>Heure : {currentEvent.time}</p>
-                {currentEvent.place ?
-                    <p>Lieu : {currentEvent.place}</p>
-                    : <p>Lieu : Centre Sportif de MERN</p>
-                }
-                
-                <div className='containerButton'>
-                    <Link to='/calendar'><button className='button'>Retourner au calendrier</button></Link>
-                </div>
-
-                <section className='containerAnswer'>
-
-                    <article className='answer'>
-                        <h2>En attente</h2>
-                        <div className='gridAllPlayerList'>
-                            {listPlayers
-                                .filter(player => 
-                                    !listPresents.some(present => present._id === player._id) 
-                                    && 
-                                    !listAbsents.some(absent => absent._id === player._id))
-                                .map(player => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={player._id} {...player} />)
+                <div>
+                    <div className='matchSheetTitleAndButton'>
+                        <div className='text'>
+                            <h1>Feuille de match - {teamSelectedName}</h1>
+                            <h3>{currentEvent.name}</h3>
+                            <p>Date : {currentEvent.date}</p>
+                            <p>Heure : {currentEvent.time}</p>
+                            {currentEvent.place ?
+                                <p>Lieu : {currentEvent.place}</p>
+                                : <p>Lieu : Centre Sportif de MERN</p>
                             }
                         </div>
-                    </article>
-
-                    <article className='answer'>
-                        <h2>Présent</h2>
-                        <div className='gridAllPlayerList'>
-                            {listPresents.map(present => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={present._id} {...present} />)}
+                        <div className='containerButton'>
+                            <Link to='/calendar'><button className='button'>Retourner au calendrier</button></Link>
                         </div>
-                    </article>
+                    </div>
 
-                    <article className='answer'>
-                        <h2>Absent</h2>
-                        <div className='gridAllPlayerList'>
-                            {listAbsents.map(player => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={player._id} {...player} />)}
-                        </div>
-                    </article>
+                    <section className='containerAnswer'>
 
-                </section>
-                
+                        <article className='answer'>
+                            <h2>En attente</h2>
+                            <div className='gridAllPlayerList'>
+                                {listPlayers
+                                    .filter(player => 
+                                        !listPresents.some(present => present._id === player._id) 
+                                        && 
+                                        !listAbsents.some(absent => absent._id === player._id))
+                                    .map(player => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={player._id} {...player} />)
+                                }
+                            </div>
+                        </article>
+
+                        <article className='answer'>
+                            <h2>Présent</h2>
+                            <div className='gridAllPlayerList'>
+                                {listPresents.map(present => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={present._id} {...present} />)}
+                            </div>
+                        </article>
+
+                        <article className='answer'>
+                            <h2>Absent</h2>
+                            <div className='gridAllPlayerList'>
+                                {listAbsents.map(player => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={player._id} {...player} />)}
+                            </div>
+                        </article>
+
+                    </section>
+                </div>
             </main>
         </>
     )

@@ -1,3 +1,14 @@
+.matchSheetTitleAndButton {
+    
+    display: flex;
+    justify-content: space-between;
+    text {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
 .containerAnswer {
     display: flex;
     flex-direction: row;

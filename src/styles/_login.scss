@@ -1,0 +1,59 @@
+.formLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 50vw;
+    background-color: #ffffff50;
+    border-radius: 20px;
+    margin: 0;
+    color: $color-5;
+    font-size: 1.5rem;
+    label {
+        margin: 5%;
+    }
+    input {
+        width: 90%;
+        color: $color-1;
+        background-color: $color-12;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid $color-1;
+        font-size: 1.3rem;
+        margin: 5%;
+        // padding: 5px;
+        // margin-bottom: 15px;
+        
+    }
+    ::placeholder {
+        color: $color-1;
+        opacity: .3;
+    }
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        // font-size: 1.5rem;
+
+        
+        button {
+            border: none;
+            // padding: 5px 10px;
+            width: 50%;
+            height: 40px;
+            background-color: $color-1;
+            color: $color-71;
+            font-size: 1.5rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            // padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+        :hover {
+            background-color: $color-3;
+            color: $color-5;
+            // font-size: 1.5rem;
+        }
+    }
+}

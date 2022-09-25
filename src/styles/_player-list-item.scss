@@ -1,0 +1,57 @@
+.containerPlayerAndCoach {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2%;
+    border: none;
+    // border: 1px solid red;;
+    border-radius: 5px;
+    background-color: $color-7; 
+    cursor: pointer;
+    width: 80%;
+    .card {
+        display: inline-block;
+        margin: 2%;
+        height: 130px;
+        width: 100%;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: $color-5;
+        // border: 1px solid blue; 
+        .userTeam {
+            margin: 5%;
+        }
+        p {
+            line-height: .5rem;
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+    .coach {
+        height: 90px;
+    }
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 80%;
+        padding: auto;
+        .spaceButton {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            font-size: 1rem;
+            button {
+                height: 50px;
+                width: 150px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+

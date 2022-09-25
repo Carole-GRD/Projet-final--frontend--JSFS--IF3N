@@ -81,12 +81,14 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                                         <button onClick={present} className='buttonPresent'>Présent</button>
                                 } */}
                         {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
-                                {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
+                                {/* {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
                                     || absentId.some(user => user._id === userId) ) &&
                                         <button onClick={present} className='buttonPresent'>Présent</button>
-                                }
-                                {(presentId.some(user => user._id === userId) ) &&
+                                } */}
+                                {(presentId.some(user => user._id === userId) ) ?
                                         <button onClick={present} className='buttonPresent present'>Présent</button>
+                                        :
+                                        <button onClick={present} className='buttonPresent'>Présent</button>
                                 }
                         {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
                                 {/* Si le joueur n'est pas dans la liste des absents, ni dans la liste des présents; c'est-à-dire qu'il n'a pas encore répondu */}
@@ -96,12 +98,14 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                                     <button onClick={absent} className='buttonAbsent'>Absent</button>
                                 } */}
                         {/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
-                                {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
+                                {/* {((!absentId.some(user => user._id === userId) && !presentId.some(user => user._id === userId))
                                     || presentId.some(user => user._id === userId) ) &&
                                         <button onClick={absent} className='buttonAbsent'>Absent</button>
-                                }
-                                {(absentId.some(user => user._id === userId) ) &&
+                                } */}
+                                {(absentId.some(user => user._id === userId) ) ?
                                         <button onClick={absent} className='buttonAbsent absent'>Absent</button>
+                                        :
+                                        <button onClick={absent} className='buttonAbsent'>Absent</button>
                                 }
 
                             </div>
@@ -109,9 +113,9 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
 
                         {/* TODO: ajouter fonction et style */}
                         {((teamSelectedName !== '' && userRole === 'coach') || userRole === 'admin') && 
-                            <div>
-                                <button>Modifier</button>
-                                <button onClick={onDelete}>Supprimer</button>
+                            <div className='spaceButtonCalendar'>
+                                <button className='buttonAdmin'>Modifier</button>
+                                <button onClick={onDelete} className='buttonAdmin'>Supprimer</button>
                             </div>
                         }
 
