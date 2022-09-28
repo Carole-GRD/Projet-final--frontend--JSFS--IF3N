@@ -32,34 +32,31 @@ const Register = () => {
                     <article className='formRegister'>
                         <form onSubmit={handleSubmit(onRegister)}>
                             <div>
-                                <label for="pseudo">Pseudo</label>
+                                <label htmlFor="pseudo">Pseudo</label>
                                 <input id='pseudo' type='text' placeholder='Pseudo' {...register('pseudo')} />
                             </div>
                             <div>
-                                <label for="lastname">Nom</label>
+                                <label htmlFor="lastname">Nom</label>
                                 <input id='lastname' type='text' placeholder='Nom' {...register('lastname')} />
                             </div>
                             <div>
-                                <label for="firstname">Prénom</label>
+                                <label htmlFor="firstname">Prénom</label>
                                 <input id='firstname' type='text' placeholder='Prénom' {...register('firstname')} />
                             </div>
                             <div>
-                                <label for="adress">Adresse</label>
+                                <label htmlFor="adress">Adresse</label>
                                 <input id='adress' type='text' placeholder='Rue, numéro – CP Localité' {...register('adress')} />
                             </div>
                             <div>
-                                <label for="password">Mot de passe</label>
+                                <label htmlFor="password">Mot de passe</label>
                                 <input id='password' type='text' placeholder='Mot de passe' {...register('password')} />
                             </div>
-                            {/* <input id='role' type='text' placeholder='Rôle' /> */}
-                            {/* <input id='position' type='text' placeholder='Position' /> */}
-                            {/* <input id='team' type='text' placeholder='Équipe' /> */}
                             <div>
-                                <label for="email">Email</label>
+                                <label htmlFor="email">Email</label>
                                 <input id='email' type='email' placeholder='Email' {...register('email')} />
                             </div>
                             <div>
-                                <label for="phone">Téléphone ou GSM</label>
+                                <label htmlFor="phone">Téléphone ou GSM</label>
                                 <input id='phone' type='text' placeholder='Téléphone ou GSM' {...register('phone')} />
                             </div>
                             <div className='buttonContainer'>

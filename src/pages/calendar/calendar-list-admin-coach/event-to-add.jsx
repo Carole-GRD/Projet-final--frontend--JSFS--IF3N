@@ -57,21 +57,21 @@ const EventToAdd = () => {
                         <form onSubmit={handleSubmit(onRegisterEvent)}>
                             
                             <div>
-                                <label for='teamId'>Équipe</label>
+                                <label htmlFor='teamId'>Équipe</label>
                                 <select id='teamId' {...register('teamId')}>
                                     {teamList.map(team => <option key={team._id} value={team._id}>{team.name}</option>)}
                                 </select>
                             </div>
                             
                             <div>
-                                <label for='coach'>Coach</label>
+                                <label htmlFor='coach'>Coach</label>
                                 <select id='coach' {...register('coach')}>
                                     {coachList.map(coach => <option key={coach._id} value={coach._id}>{coach.firstname} {coach.lastname}</option>)}
                                 </select>
                             </div>
 
                             <div>
-                                <label for='name'>Évènement</label>
+                                <label htmlFor='name'>Évènement</label>
                                 <select id='name' {...register('name')}>
                                     <option value='Entrainement'>Entrainement</option>
                                     <option value='Match'>Match</option>
@@ -80,22 +80,22 @@ const EventToAdd = () => {
                             </div>
                             
                             <div>
-                                <label for='place'>Lieu</label>
+                                <label htmlFor='place'>Lieu</label>
                                 <input id='place' type='text' placeholder='Lieu' {...register('place')} />
                             </div>
 
                             <div>
-                                <label for='date'>Date</label>
+                                <label htmlFor='date'>Date</label>
                                 <input id='date' type='text' placeholder='JJ/MM/AAAA' {...register('date')} />
                             </div>
 
                             <div>
-                                <label for='time'>Heure</label>
+                                <label htmlFor='time'>Heure</label>
                                 <input id='time' type='text' placeholder='Heure (00h00)' {...register('time')} />
                             </div>
 
                             <div>
-                                <label for='opposingTeam'>Équipe adverse</label>
+                                <label htmlFor='opposingTeam'>Équipe adverse</label>
                                 <input id='opposingTeam' type='text' placeholder='Équipe adverse' {...register('opposingTeam')} />
                             </div>
 

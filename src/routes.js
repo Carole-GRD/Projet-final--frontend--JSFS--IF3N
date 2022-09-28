@@ -11,6 +11,7 @@ import TeamToUpdate from "./pages/team/team-list-admin/team-to-update";
 import MatchSheet from "./pages/calendar/match-sheet/match-sheet";
 import UserToUpdate from "./pages/player/user-list-admin/user-to-update";
 import EventToAdd from "./pages/calendar/calendar-list-admin-coach/event-to-add";
+import EventToUpdate from "./pages/calendar/calendar-list-admin-coach/event-to-update";
 
 
 
@@ -28,7 +29,7 @@ export const routes = [
         element: <PlayerList />
     },
     {
-        path:'userToUpdate/:id',
+        path:'userToUpdate/:idUserToUpdate',
         element: <UserToUpdate />
     },
     {
@@ -42,6 +43,10 @@ export const routes = [
     {
         path:'eventToAdd',
         element: <EventToAdd />
+    },
+    {
+        path:'eventToUpdate/:idEvent',
+        element: <EventToUpdate />
     },
     {
         path:'rating',

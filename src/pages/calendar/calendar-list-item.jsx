@@ -1,4 +1,3 @@
-import { bgcolor } from "@mui/system";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
@@ -114,7 +113,7 @@ const CalendarListItem = ({_id, teamId, name, place, date, time, opposingTeam, p
                         {/* TODO: ajouter fonction et style */}
                         {((teamSelectedName !== '' && userRole === 'coach') || userRole === 'admin') && 
                             <div className='spaceButtonCalendar'>
-                                <button className='buttonAdmin'>Modifier</button>
+                                <Link to={`/eventToUpdate/${_id}`}><button className='buttonAdmin'>Modifier</button></Link>
                                 <button onClick={onDelete} className='buttonAdmin'>Supprimer</button>
                             </div>
                         }

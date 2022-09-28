@@ -39,7 +39,7 @@ const MatchSheet = () => {
     }
 
     const onIsPresent = (idPlayer) => {
-
+        console.log(idPlayer);
         // mise à jour des données
         // on modifie les données de 'currentEvent' car on a cliqué sur un évènement en particulier (on est sur la feuille de match de cet évènement) !
         const data = {
@@ -66,7 +66,7 @@ const MatchSheet = () => {
 
     const onIsAbsent = (idPlayer) => {
         // console.log(idPlayer);    // → identifiant du joueur qui clique sur le bouton 'absent'
-
+        console.log(idPlayer);
         const data = {
             name : currentEvent.name,           
             place : currentEvent.place,

@@ -51,12 +51,12 @@ const TeamToAdd = () => {
                     <article className='formTeamToAdd'>
                         <form onSubmit={handleSubmit(onRegisterTeam)}>
                             <div>
-                                <label for='name'>Équipe</label>
+                                <label htmlFor='name'>Équipe</label>
                                 <input id="name" type="text" placeholder="Nom de l'équipe" {...register('name')} />
                             </div>
 
                             <div>
-                                <label for='coach'>Coach</label>    
+                                <label htmlFor='coach'>Coach</label>    
                                 <select id="coach" {...register('coach')}>
                                     {coachList.map(coach => <option key={coach._id} value={coach._id}>{coach.firstname} {coach.lastname}</option>)}
                                 </select>

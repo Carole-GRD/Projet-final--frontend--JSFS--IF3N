@@ -36,11 +36,11 @@ const Login = () => {
                     <article className='formLogin'>
                         <form onSubmit={handleSubmit(onLogin)}>
                             <div>
-                                <label for="credential">Pseudo ou email</label>
+                                <label htmlFor="credential">Pseudo ou email</label>
                                 <input id='credential' type='text' placeholder='Pseudo ou email' {...register('credential')} />
                             </div>
                             <div>
-                                <label for="credpasswordential">Mot de passe</label>
+                                <label htmlFor="credpasswordential">Mot de passe</label>
                                 <input id='password' type='text' placeholder='Mot de passe' {...register('password')} />
                             </div>
                             <div className='buttonContainer'>

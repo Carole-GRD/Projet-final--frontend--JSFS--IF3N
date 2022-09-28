@@ -31,7 +31,6 @@ const TeamListItem = ({_id, coach, name, deleteTeam }) => {
                     <div role='button' onClick={handleSelectedTeam}>
                         <h3>{name}</h3>
                         <p>Coach : {coach.firstname}</p>
-                        
                     </div>
                     <div>
                         {userRole === 'admin' && (

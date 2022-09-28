@@ -67,12 +67,12 @@ const TeamToUpdate = () => {
                     <article className='formTeamToUpdate'>
                         <form onSubmit={handleSubmit(onTeamUpdated)}>
                             <div>
-                                <label for='name'>Équipe</label>
+                                <label htmlFor='name'>Équipe</label>
                                 <input id='name' type='text' placeholder='Équipe' {...register('name')} />
                             </div>
 
                             <div>
-                                <label for='coach'>Coach</label>
+                                <label htmlFor='coach'>Coach</label>
                                 <select id='coach' {...register('coach')}>
                                     {userList
                                         .filter(user => user.role === 'coach')
@@ -87,21 +87,22 @@ const TeamToUpdate = () => {
                         </form>
 
                         {listPlayer.map(player => 
-                                <div>
+                                <div key={player._id} className='listPlayer'>
                                     <div>{player.firstname} {player.lastname}</div>
                                     <button onClick={() => {onPlayerDelete(player._id)}}>Supprimer</button>
                                 </div>    
                         )}
 
-                        <select id='player'>
-                            {userList
-                                .filter(user => user.role === 'player')
-                                .filter(user => !listPlayer.some(player => player._id === user._id))
-                                .map(player => <option key={player._id} value={player._id}>{player.firstname} {player.lastname}</option>
-                            )}
-                        </select>
-                        <button onClick={onPlayerAdd}>Ajouter</button>
-
+                        <div className='addPlayer'>
+                            <select id='player'>
+                                {userList
+                                    .filter(user => user.role === 'player')
+                                    .filter(user => !listPlayer.some(player => player._id === user._id))
+                                    .map(player => <option key={player._id} value={player._id}>{player.firstname} {player.lastname}</option>
+                                )}
+                            </select>
+                            <button onClick={onPlayerAdd}>Ajouter</button>
+                        </div>
                     </article>
                 </div>
             </main>
