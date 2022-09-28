@@ -15,7 +15,7 @@ const UserToUpdate = () => {
                 console.log(response.data);
                 console.log(response.data.pseudo);
                 // const inputModification = ['pseudo', 'lastname', 'firstname', 'adress', 'email', 'phone'];
-                // inputModification.forEach(input => {setValue('input', response.data.input)});
+                // inputModification.forEach(input => {setValue('input', response.data[input])});
                 setValue('pseudo', response.data.pseudo)
                 setValue('lastname', response.data.lastname)
                 setValue('firstname', response.data.firstname)

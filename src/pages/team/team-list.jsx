@@ -13,7 +13,6 @@ const TeamList = () => {
     const userRole = useSelector(state => state.auth.userRole);
     const isConnected = useSelector(state => state.auth.isConnected);
     const userId = useSelector(state => state.auth.userId);
-
     
     useEffect(() => {
         // console.log(data);
