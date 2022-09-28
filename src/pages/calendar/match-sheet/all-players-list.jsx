@@ -1,10 +1,24 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+
 
 
 const AllPlayerList = ({lastname, firstname, _id, isPresent, isAbsent}) => {
 
     const userId = useSelector(state => state.auth.userId);
     
+    const [listPlayers, setListPlayers] = useState([]);
+    const teamSelectedId = useSelector(state => state.teams.teamSelectedId);
+    useEffect(() => {
+        axios.get(`http://localhost:8080/api/team/${teamSelectedId}`)
+            .then(function (response) {
+                // console.log(response.data);
+                setListPlayers(response.data.userId);
+            })  
+    }, []);
+
+
     const present = () => {
         // console.log(_id);
         isPresent(_id);

@@ -125,13 +125,15 @@ const MatchSheet = () => {
                             <h2>Présent</h2>
                             <div className='gridAllPlayerList'>
                                 {listPresents.map(present => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={present._id} {...present} />)}
+                                
                             </div>
                         </article>
 
                         <article className='answer'>
                             <h2>Absent</h2>
                             <div className='gridAllPlayerList'>
-                                {listAbsents.map(player => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={player._id} {...player} />)}
+                                {listAbsents.map(absent => <AllPlayerList isPresent={onIsPresent} isAbsent={onIsAbsent} key={absent._id} {...absent} />)}
+                                
                             </div>
                         </article>
 
